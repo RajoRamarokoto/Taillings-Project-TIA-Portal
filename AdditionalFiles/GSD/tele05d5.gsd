@@ -1,0 +1,1729 @@
+;============================================================
+; Profibus Device Database of :
+; Schneider Electric PDP / MB Gateway
+; Model : LA9P307 
+; Description : LA9P307 Profibus DP-Modbus Gateway
+; Language : English
+; Date : 15 Mars 2001
+; Author : HMS Industrial Networks AB
+;============================================================
+#Profibus_DP
+
+GSD_Revision        = 2
+
+; Device identification
+Vendor_Name         = "Schneider Electric"
+Model_Name          = "LA9P307"
+Revision            = "Version 1.2"
+Ident_Number        = 0x05D5
+Protocol_Ident      = 0              ; DP protocol
+Station_Type        = 0              ; Slave device
+FMS_supp            = 0              ; FMS not supported
+Hardware_Release    = "Version 1.2"
+Software_Release    = "Version 1.1"
+
+; Supported baudrates
+9.6_supp            = 1
+19.2_supp           = 1
+93.75_supp          = 1
+187.5_supp          = 1
+500_supp            = 1
+1.5M_supp           = 1
+3M_supp             = 1
+6M_supp             = 1
+12M_supp            = 1
+
+; Maximum responder time for supported baudrates 
+MaxTsdr_9.6         = 60
+MaxTsdr_19.2        = 60
+MaxTsdr_93.75       = 60
+MaxTsdr_187.5       = 60
+MaxTsdr_500         = 100
+MaxTsdr_1.5M        = 150
+MaxTsdr_3M          = 250
+MaxTsdr_6M          = 450
+MaxTsdr_12M         = 800
+
+; Supported hardware features
+Redundancy          = 0       ; not supported
+Repeater_Ctrl_Sig   = 2       ; TTL
+24V_Pins            = 0       ; not connected
+Implementation_Type = "SPC3"
+
+; Supported DP features
+Freeze_Mode_supp    = 1       ; supported
+Sync_Mode_supp      = 1       ; supported
+Auto_Baud_supp      = 1       ; supported
+Set_Slave_Add_supp  = 0       ; not supported
+
+; Maximum polling frequency
+Min_Slave_Intervall = 1       ; 100 us
+
+; Maximum supported sizes
+Modular_Station     = 1       ; modular
+Max_Module          = 1
+Max_Input_Len       = 132
+Max_Output_Len      = 132
+Max_Data_Len        = 264
+Modul_Offset        = 1
+
+Fail_Safe           = 0       ; state CLEAR not accepted
+
+Slave_Family        = 9
+Max_Diag_Data_Len   = 6
+
+; Max Length of User Parameter
+Max_User_Prm_Data_Len = 231
+
+PrmText = 1
+Text(0) = "1200 baud"
+Text(1) = "2400 baud"
+Text(2) = "4800 baud"
+Text(3) = "9600 baud"
+Text(4) = "19200 baud"
+EndPrmText
+
+PrmText = 2
+Text(0) = "7 bits"
+Text(1) = "8 bits"
+EndPrmText
+
+PrmText = 3
+Text(0) = "1 bit"
+Text(1) = "2 bits"
+EndPrmText
+
+PrmText = 4
+Text(0) = "No parity"
+Text(1) = "Odd"
+Text(2) = "Even"
+EndPrmText
+
+PrmText = 5
+Text(0) = "No reaction"
+Text(1) = "Modbus polling is stopped"
+Text(2) = "All commands reset"
+EndPrmText
+
+PrmText = 6
+Text(0) = "Fast scan"
+Text(1) = "Normal scan"
+EndPrmText
+
+PrmText = 7
+Text(0) = "Not scanned"
+Text(1) = "Slave 1"
+Text(2) = "Slave 2"
+Text(3) = "Slave 3"
+Text(4) = "Slave 4"
+Text(5) = "Slave 5"
+Text(6) = "Slave 6"
+Text(7) = "Slave 7"
+Text(8) = "Slave 8"
+Text(9) = "Slave 9"
+Text(10) = "Slave 10"
+Text(11) = "Slave 11"
+Text(12) = "Slave 12"
+Text(13) = "Slave 13"
+Text(14) = "Slave 14"
+Text(15) = "Slave 15"
+EndPrmText
+
+PrmText = 8
+Text(0) = "1 word"
+Text(1) = "2 word"
+Text(2) = "3 word"
+Text(3) = "4 word"
+Text(4) = "5 word"
+Text(5) = "6 word"
+Text(6) = "7 word"
+Text(7) = "8 word"
+Text(8) = "9 word"
+Text(9) = "10 word"
+Text(10) = "11 word"
+Text(11) = "12 word"
+Text(12) = "13 word"
+Text(13) = "14 word"
+Text(14) = "15 word"
+Text(15) = "16 word"
+EndPrmText
+
+
+
+
+ExtUserPrmData = 1 "Modbus speed"
+unsigned8  3 0,1,2,3,4 
+Prm_Text_Ref = 1
+EndExtUserPrmData 
+
+ExtUserPrmData = 2 "Modbus number of data bits"
+Bit(0) 1 0-1
+Prm_Text_Ref = 2
+EndExtUserPrmData 
+
+ExtUserPrmData = 3 "Modbus number of stop bits"
+Bit(1) 0 0-1
+Prm_Text_Ref = 3
+EndExtUserPrmData 
+
+ExtUserPrmData = 4 "Modbus parity"
+BitArea(2-3) 0 0-2
+Prm_Text_Ref = 4
+EndExtUserPrmData 
+
+ExtUserPrmData = 5 "Modbus max N"
+unsigned8 7 1-128
+EndExtUserPrmData 
+
+ExtUserPrmData = 6 "Modbus timeout (x 0.1 s)"
+unsigned8 10 1-255
+EndExtUserPrmData 
+
+ExtUserPrmData = 7 "Modbus reconnect time (s)"
+unsigned8 30 1-255
+EndExtUserPrmData 
+
+ExtUserPrmData = 8 "Profibus PPO time out (x 0.1 s)"
+unsigned8 10 1-10
+EndExtUserPrmData 
+
+ExtUserPrmData = 9 "Profibus PPO failure"
+unsigned8 2 0-2
+Prm_Text_Ref = 5
+EndExtUserPrmData 
+
+ExtUserPrmData = 10 "Modbus return time (Char)"
+unsigned8 3 0-255
+EndExtUserPrmData 
+
+ExtUserPrmData = 11 "Modbus number of retrials"
+unsigned8 3 0-255
+EndExtUserPrmData 
+
+ExtUserPrmData = 12 "Command scan period fast"
+unsigned8 20 0-255
+EndExtUserPrmData 
+
+ExtUserPrmData = 13 "Command scan period normal"
+unsigned8 200 0-255
+EndExtUserPrmData 
+
+ExtUserPrmData = 14 "Monitoring scan period fast"
+unsigned8 20 0-255
+EndExtUserPrmData 
+
+ExtUserPrmData = 15 "Monitoring scan period normal"
+unsigned8 200 0-255
+EndExtUserPrmData 
+
+ExtUserPrmData = 16 "CC1: Scan configuration"
+Bit(0) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 17 "CC2: Scan configuration"
+Bit(1) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 18 "CC3: Scan configuration"
+Bit(2) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 19 "CC4: Scan configuration"
+Bit(3) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 20 "CC5: Scan configuration"
+Bit(4) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 21 "CC6: Scan configuration"
+Bit(5) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 22 "CC7: Scan configuration"
+Bit(6) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 23 "CC8: Scan configuration"
+Bit(7) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 24 "CC9: Scan configuration"
+Bit(0) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 25 "CC10: Scan configuration"
+Bit(1) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 26 "CC11: Scan configuration"
+Bit(2) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 27 "CC12: Scan configuration"
+Bit(3) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 28 "CC13: Scan configuration"
+Bit(4) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 29 "CC14: Scan configuration"
+Bit(5) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 30 "CC15: Scan configuration"
+Bit(6) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 31 "CC16: Scan configuration"
+Bit(7) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 32 "CC17: Scan configuration"
+Bit(0) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 33 "CC18: Scan configuration"
+Bit(1) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 34 "CC19: Scan configuration"
+Bit(2) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 35 "CC20: Scan configuration"
+Bit(3) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 36 "CC21: Scan configuration"
+Bit(4) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 37 "CC22: Scan configuration"
+Bit(5) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 38 "CC23: Scan configuration"
+Bit(6) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 39 "CC24: Scan configuration"
+Bit(7) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 40 "CC25: Scan configuration"
+Bit(0) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 41 "CC26: Scan configuration"
+Bit(1) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 42 "CC27: Scan configuration"
+Bit(2) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 43 "CC28: Scan configuration"
+Bit(3) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 44 "CC29: Scan configuration"
+Bit(4) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 45 "CC30: Scan configuration"
+Bit(5) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 46 "CC31: Scan configuration"
+Bit(6) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 47 "CC32: Scan configuration"
+Bit(7) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 48 "CM1: Scan configuration"
+Bit(0) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 49 "CM2: Scan configuration"
+Bit(1) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 50 "CM3: Scan configuration"
+Bit(2) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 51 "CM4: Scan configuration"
+Bit(3) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 52 "CM5: Scan configuration"
+Bit(4) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 53 "CM6: Scan configuration"
+Bit(5) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 54 "CM7: Scan configuration"
+Bit(6) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 55 "CM8: Scan configuration"
+Bit(7) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 56 "CM9: Scan configuration"
+Bit(0) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 57 "CM10: Scan configuration"
+Bit(1) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 58 "CM11: Scan configuration"
+Bit(2) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 59 "CM12: Scan configuration"
+Bit(3) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 60 "CM13: Scan configuration"
+Bit(4) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 61 "CM14: Scan configuration"
+Bit(5) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 62 "CM15: Scan configuration"
+Bit(6) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 63 "CM16: Scan configuration"
+Bit(7) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 64 "CM17: Scan configuration"
+Bit(0) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 65 "CM18: Scan configuration"
+Bit(1) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 66 "CM19: Scan configuration"
+Bit(2) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 67 "CM20: Scan configuration"
+Bit(3) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 68 "CM21: Scan configuration"
+Bit(4) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 69 "CM22: Scan configuration"
+Bit(5) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 70 "CM23: Scan configuration"
+Bit(6) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 71 "CM24: Scan configuration"
+Bit(7) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 72 "CM25: Scan configuration"
+Bit(0) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 73 "CM26: Scan configuration"
+Bit(1) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 74 "CM27: Scan configuration"
+Bit(2) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 75 "CM28: Scan configuration"
+Bit(3) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 76 "CM29: Scan configuration"
+Bit(4) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 77 "CM30: Scan configuration"
+Bit(5) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 78 "CM31: Scan configuration"
+Bit(6) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 79 "CM32: Scan configuration"
+Bit(7) 1 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData 
+
+ExtUserPrmData = 80 "CC1: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 81 "CC1: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 82 "CC1: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 83 "CC2: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 84 "CC2: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 85 "CC2: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 86 "CC3: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 87 "CC3: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 88 "CC3: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 89 "CC4: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 90 "CC4: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 91 "CC4: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 92 "CC5: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 93 "CC5: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 94 "CC5: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 95 "CC6: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 96 "CC6: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 97 "CC6: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 98 "CC7: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 99 "CC7: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 100 "CC7: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 101 "CC8: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 102 "CC8: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 103 "CC8: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 104 "CM1: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 105 "CM1: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 106 "CM1: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 107 "CM2: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 108 "CM2: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 109 "CM2: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 110 "CM3: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 111 "CM3: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 112 "CM3: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 113 "CM4: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 114 "CM4: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 115 "CM4: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 116 "CM5: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 117 "CM5: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 118 "CM5: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 119 "CM6: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 120 "CM6: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 121 "CM6: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 122 "CM7: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 123 "CM7: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 124 "CM7: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 125 "CM8: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 126 "CM8: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 127 "CM8: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 128 "CC9: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 129 "CC9: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 130 "CC9: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 131 "CC10: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 132 "CC10: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 133 "CC10: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 134 "CC11: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 135 "CC11: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 136 "CC11: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 137 "CC12: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 138 "CC12: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 139 "CC12: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 140 "CC13: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 141 "CC13: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 142 "CC13: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 143 "CC14: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 144 "CC14: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 145 "CC14: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 146 "CC15: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 147 "CC15: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 148 "CC15: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 149 "CC16: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 150 "CC16: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 151 "CC16: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 152 "CM9: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 153 "CM9: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 154 "CM9: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 155 "CM10: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 156 "CM10: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 157 "CM10: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 158 "CM11: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 159 "CM11: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 160 "CM11: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 161 "CM12: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 162 "CM12: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 163 "CM12: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 164 "CM13: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 165 "CM13: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 166 "CM13: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 167 "CM14: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 168 "CM14: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 169 "CM14: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 170 "CM15: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 171 "CM15: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 172 "CM15: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 173 "CM16: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 174 "CM16: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 175 "CM16: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 176 "CC17: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 177 "CC17: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 178 "CC17: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 179 "CC18: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 180 "CC18: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 181 "CC18: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 182 "CC19: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 183 "CC19: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 184 "CC19: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 185 "CC20: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 186 "CC20: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 187 "CC20: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 188 "CC21: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 189 "CC21: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 190 "CC21: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 191 "CC22: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 192 "CC22: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 193 "CC22: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 194 "CC23: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 195 "CC23: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 196 "CC23: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 197 "CC24: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 198 "CC24: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 199 "CC24: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 200 "CC25: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 201 "CC25: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 202 "CC25: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 203 "CC26: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 204 "CC26: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 205 "CC26: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 206 "CC27: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 207 "CC27: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 208 "CC27: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 209 "CC28: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 210 "CC28: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 211 "CC28: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 212 "CC29: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 213 "CC29: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 214 "CC29: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 215 "CC30: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 216 "CC30: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 217 "CC30: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 218 "CC31: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 219 "CC31: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 220 "CC31: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 221 "CC32: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 222 "CC32: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 223 "CC32: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+
+ExtUserPrmData = 224 "CM17: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 225 "CM17: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 226 "CM17: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 227 "CM18: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 228 "CM18: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 229 "CM18: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 230 "CM19: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 231 "CM19: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 232 "CM19: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 233 "CM20: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 234 "CM20: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 235 "CM20: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 236 "CM21: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 237 "CM21: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 238 "CM21: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 239 "CM22: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 240 "CM22: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 241 "CM22: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 242 "CM23: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 243 "CM23: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 244 "CM23: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 245 "CM24: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 246 "CM24: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 247 "CM24: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 248 "CM25: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 249 "CM25: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 250 "CM25: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 251 "CM26: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 252 "CM26: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 253 "CM26: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 254 "CM27: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 255 "CM27: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 256 "CM27: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 257 "CM28: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 258 "CM28: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 259 "CM28: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 260 "CM29: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 261 "CM29: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 262 "CM29: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 263 "CM30: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 264 "CM30: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 265 "CM30: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 266 "CM31: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 267 "CM31: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 268 "CM31: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+ExtUserPrmData = 269 "CM32: Modbus slave address"
+Bitarea(0-3) 0 0-15
+Prm_Text_Ref = 7
+EndExtUserPrmData 
+
+ExtUserPrmData = 270 "CM32: Modbus variable length"
+Bitarea(4-7) 0 0-15
+Prm_Text_Ref = 8
+EndExtUserPrmData 
+
+ExtUserPrmData = 271 "CM32: Modbus variable address"
+unsigned16 0 0-65535
+EndExtUserPrmData 
+
+
+Ext_User_Prm_Data_Const(0) = 0x00
+
+;General parameters
+Ext_User_Prm_Data_Ref(1) = 1 ;Modbus_speeed
+Ext_User_Prm_Data_Ref(2) = 2 ;Modbus_format
+Ext_User_Prm_Data_Ref(2) = 3 ;Modbus_format
+Ext_User_Prm_Data_Ref(2) = 4 ;Modbus_format
+Ext_User_Prm_Data_Ref(3) = 5 ;Modbus_max_N 
+Ext_User_Prm_Data_Ref(5) = 6 ;Modbus_timeout
+Ext_User_Prm_Data_Ref(7) = 7 ;Modbus_reconnect_time 
+Ext_User_Prm_Data_Ref(4) = 10 ;Modbus Return_time 
+Ext_User_Prm_Data_Ref(6) = 11 ;Modbus Number_of_retrials 
+Ext_User_Prm_Data_Ref(8) = 8 ;Profibus PPO_time_out 
+Ext_User_Prm_Data_Ref(9) = 9 ;Profibus PPO_failure 
+
+;Modbus I/O Scanner
+Ext_User_Prm_Data_Ref(27) = 12 ;Command_scan_period_fast 
+Ext_User_Prm_Data_Ref(28) = 13 ;Command_scan_period_normal 
+Ext_User_Prm_Data_Ref(29) = 14 ;Monitoring_scan_period_fast 
+Ext_User_Prm_Data_Ref(30) = 15 ;Monitoring_scan_period_normal 
+Ext_User_Prm_Data_Ref(31) = 16 ;CC1 scan configuration 
+Ext_User_Prm_Data_Ref(39) = 80 ;CC1 slave address 
+Ext_User_Prm_Data_Ref(40) = 82 ;CC1 variable number
+Ext_User_Prm_Data_Ref(39) = 81 ;CC1 variable length
+Ext_User_Prm_Data_Ref(31) = 17 ;CC2 scan configuration 
+Ext_User_Prm_Data_Ref(42) = 83 ;CC2 slave address 
+Ext_User_Prm_Data_Ref(43) = 85 ;CC2 variable number
+Ext_User_Prm_Data_Ref(42) = 84 ;CC2 variable length
+Ext_User_Prm_Data_Ref(31) = 18 ;CC3 scan configuration 
+Ext_User_Prm_Data_Ref(45) = 86 ;CC3 slave address 
+Ext_User_Prm_Data_Ref(46) = 88 ;CC3 variable number
+Ext_User_Prm_Data_Ref(45) = 87 ;CC3 variable length
+Ext_User_Prm_Data_Ref(31) = 19 ;CC4 scan configuration 
+Ext_User_Prm_Data_Ref(48) = 89 ;CC4 slave address 
+Ext_User_Prm_Data_Ref(49) = 91 ;CC4 variable number
+Ext_User_Prm_Data_Ref(48) = 90 ;CC4 variable length
+Ext_User_Prm_Data_Ref(31) = 20 ;CC5 scan configuration 
+Ext_User_Prm_Data_Ref(51) = 92 ;CC5 slave address 
+Ext_User_Prm_Data_Ref(52) = 94 ;CC5 variable number
+Ext_User_Prm_Data_Ref(51) = 93 ;CC5 variable length
+Ext_User_Prm_Data_Ref(31) = 21 ;CC6 scan configuration 
+Ext_User_Prm_Data_Ref(54) = 95 ;CC6 slave address 
+Ext_User_Prm_Data_Ref(55) = 97 ;CC6 variable number
+Ext_User_Prm_Data_Ref(54) = 96 ;CC6 variable length
+Ext_User_Prm_Data_Ref(31) = 22 ;CC7 scan configuration 
+Ext_User_Prm_Data_Ref(57) = 98 ;CC7 slave address 
+Ext_User_Prm_Data_Ref(58) = 100 ;CC7 variable number
+Ext_User_Prm_Data_Ref(57) = 99 ;CC7 variable length
+Ext_User_Prm_Data_Ref(31) = 23 ;CC8 scan configuration 
+Ext_User_Prm_Data_Ref(60) = 101 ;CC8 slave address 
+Ext_User_Prm_Data_Ref(61) = 103 ;CC8 variable number
+Ext_User_Prm_Data_Ref(60) = 102 ;CC8 variable length
+Ext_User_Prm_Data_Ref(32) = 24 ;CC9 scan configuration 
+Ext_User_Prm_Data_Ref(63) = 128 ;CC9 slave address 
+Ext_User_Prm_Data_Ref(64) = 130 ;CC9 variable number
+Ext_User_Prm_Data_Ref(63) = 129 ;CC9 variable length
+Ext_User_Prm_Data_Ref(32) = 25 ;CC10 scan configuration 
+Ext_User_Prm_Data_Ref(66) = 131 ;CC10 slave address 
+Ext_User_Prm_Data_Ref(67) = 133 ;CC10 variable number
+Ext_User_Prm_Data_Ref(66) = 132 ;CC10 variable length
+Ext_User_Prm_Data_Ref(32) = 26 ;CC11 scan configuration 
+Ext_User_Prm_Data_Ref(69) = 134 ;CC11 slave address 
+Ext_User_Prm_Data_Ref(70) = 136 ;CC11 variable number
+Ext_User_Prm_Data_Ref(69) = 135 ;CC11 variable length
+Ext_User_Prm_Data_Ref(32) = 27 ;CC12 scan configuration
+Ext_User_Prm_Data_Ref(72) = 137 ;CC12 slave address 
+Ext_User_Prm_Data_Ref(73) = 139 ;CC12 variable number
+Ext_User_Prm_Data_Ref(72) = 138 ;CC12 variable length
+Ext_User_Prm_Data_Ref(32) = 28 ;CC13 scan configuration
+Ext_User_Prm_Data_Ref(75) = 140 ;CC13 slave address 
+Ext_User_Prm_Data_Ref(76) = 142 ;CC13 variable number
+Ext_User_Prm_Data_Ref(75) = 141 ;CC13 variable length
+Ext_User_Prm_Data_Ref(32) = 29 ;CC14 scan configuration 
+Ext_User_Prm_Data_Ref(78) = 143 ;CC14 slave address 
+Ext_User_Prm_Data_Ref(79) = 145 ;CC14 variable number
+Ext_User_Prm_Data_Ref(78) = 144 ;CC14 variable length
+Ext_User_Prm_Data_Ref(32) = 30 ;CC15 scan configuration 
+Ext_User_Prm_Data_Ref(81) = 146 ;CC15 slave address 
+Ext_User_Prm_Data_Ref(82) = 148 ;CC15 variable number
+Ext_User_Prm_Data_Ref(81) = 147 ;CC15 variable length
+Ext_User_Prm_Data_Ref(32) = 31 ;CC16 scan configuration 
+Ext_User_Prm_Data_Ref(84) = 149 ;CC16 slave address 
+Ext_User_Prm_Data_Ref(85) = 151 ;CC16 variable number
+Ext_User_Prm_Data_Ref(84) = 150 ;CC16 variable length
+Ext_User_Prm_Data_Ref(33) = 32 ;CC17 scan configuration 
+Ext_User_Prm_Data_Ref(87) = 176 ;CC17 slave address 
+Ext_User_Prm_Data_Ref(88) = 178 ;CC17 variable number
+Ext_User_Prm_Data_Ref(87) = 177 ;CC17 variable length
+Ext_User_Prm_Data_Ref(33) = 33 ;CC18 scan configuration 
+Ext_User_Prm_Data_Ref(90) = 179 ;CC18 slave address 
+Ext_User_Prm_Data_Ref(91) = 181 ;CC18 variable number
+Ext_User_Prm_Data_Ref(90) = 180 ;CC18 variable length
+Ext_User_Prm_Data_Ref(33) = 34 ;CC19 scan configuration 
+Ext_User_Prm_Data_Ref(93) = 182 ;CC19 slave address 
+Ext_User_Prm_Data_Ref(94) = 184 ;CC19 variable number
+Ext_User_Prm_Data_Ref(93) = 183 ;CC19 variable length
+Ext_User_Prm_Data_Ref(33) = 35 ;CC20 scan configuration 
+Ext_User_Prm_Data_Ref(96) = 185 ;CC20 slave address 
+Ext_User_Prm_Data_Ref(97) = 187 ;CC20 variable number
+Ext_User_Prm_Data_Ref(96) = 186 ;CC20 variable length
+Ext_User_Prm_Data_Ref(33) = 36 ;CC21 scan configuration 
+Ext_User_Prm_Data_Ref(99) = 188 ;CC21 slave address 
+Ext_User_Prm_Data_Ref(100) = 190 ;CC21 variable number
+Ext_User_Prm_Data_Ref(99) = 189 ;CC21 variable length
+Ext_User_Prm_Data_Ref(33) = 37 ;CC22 scan configuration 
+Ext_User_Prm_Data_Ref(102) = 191 ;CC22 slave address 
+Ext_User_Prm_Data_Ref(103) = 193 ;CC22 variable number
+Ext_User_Prm_Data_Ref(102) = 192 ;CC22 variable length
+Ext_User_Prm_Data_Ref(33) = 38 ;CC23 scan configuration 
+Ext_User_Prm_Data_Ref(105) = 194 ;CC23 slave address 
+Ext_User_Prm_Data_Ref(106) = 196 ;CC23 variable number
+Ext_User_Prm_Data_Ref(105) = 195 ;CC23 variable length
+Ext_User_Prm_Data_Ref(33) = 39 ;CC24 scan configuration 
+Ext_User_Prm_Data_Ref(108) = 197 ;CC24 slave address 
+Ext_User_Prm_Data_Ref(109) = 199 ;CC24 variable number
+Ext_User_Prm_Data_Ref(108) = 198 ;CC24 variable length
+Ext_User_Prm_Data_Ref(34) = 40 ;CC25 scan configuration 
+Ext_User_Prm_Data_Ref(111) = 200 ;CC25 slave address 
+Ext_User_Prm_Data_Ref(112) = 202 ;CC25 variable number
+Ext_User_Prm_Data_Ref(111) = 201 ;CC25 variable length
+Ext_User_Prm_Data_Ref(34) = 41 ;CC26 scan configuration 
+Ext_User_Prm_Data_Ref(114) = 203 ;CC26 slave address 
+Ext_User_Prm_Data_Ref(115) = 205 ;CC26 variable number
+Ext_User_Prm_Data_Ref(114) = 204 ;CC26 variable length
+Ext_User_Prm_Data_Ref(34) = 42 ;CC27 scan configuration 
+Ext_User_Prm_Data_Ref(117) = 206 ;CC27 slave address 
+Ext_User_Prm_Data_Ref(118) = 208 ;CC27 variable number
+Ext_User_Prm_Data_Ref(117) = 207 ;CC27 variable length
+Ext_User_Prm_Data_Ref(34) = 43 ;CC28 scan configuration 
+Ext_User_Prm_Data_Ref(120) = 209 ;CC28 slave address 
+Ext_User_Prm_Data_Ref(121) = 211 ;CC28 variable number
+Ext_User_Prm_Data_Ref(120) = 210 ;CC28 variable length
+Ext_User_Prm_Data_Ref(34) = 44 ;CC29 scan configuration 
+Ext_User_Prm_Data_Ref(123) = 212 ;CC29 slave address 
+Ext_User_Prm_Data_Ref(124) = 214 ;CC29 variable number
+Ext_User_Prm_Data_Ref(123) = 213 ;CC29 variable length
+Ext_User_Prm_Data_Ref(34) = 45 ;CC30 scan configuration 
+Ext_User_Prm_Data_Ref(126) = 215 ;CC30 slave address 
+Ext_User_Prm_Data_Ref(127) = 217 ;CC30 variable number
+Ext_User_Prm_Data_Ref(126) = 216 ;CC30 variable length
+Ext_User_Prm_Data_Ref(34) = 46 ;CC31 scan configuration 
+Ext_User_Prm_Data_Ref(129) = 218 ;CC31 slave address 
+Ext_User_Prm_Data_Ref(130) = 220 ;CC31 variable number
+Ext_User_Prm_Data_Ref(129) = 219 ;CC31 variable length
+Ext_User_Prm_Data_Ref(34) = 47 ;CC32 scan configuration 
+Ext_User_Prm_Data_Ref(132) = 221 ;CC32 slave address 
+Ext_User_Prm_Data_Ref(133) = 223 ;CC32 variable number
+Ext_User_Prm_Data_Ref(132) = 222 ;CC32 variable length
+
+Ext_User_Prm_Data_Ref(35) = 48 ;CM1 scan configuration 
+Ext_User_Prm_Data_Ref(135) = 104 ;CM1 slave address 
+Ext_User_Prm_Data_Ref(136) = 106 ;CM1 variable number
+Ext_User_Prm_Data_Ref(135) = 105 ;CM1 variable length
+Ext_User_Prm_Data_Ref(35) = 49 ;CM2 scan configuration 
+Ext_User_Prm_Data_Ref(138) = 107 ;CM2 slave address 
+Ext_User_Prm_Data_Ref(139) = 109 ;CM2 variable number
+Ext_User_Prm_Data_Ref(138) = 108 ;CM2 variable length
+Ext_User_Prm_Data_Ref(35) = 50 ;CM3 scan configuration
+Ext_User_Prm_Data_Ref(141) = 110 ;CM3 slave address 
+Ext_User_Prm_Data_Ref(142) = 112 ;CM3 variable number
+Ext_User_Prm_Data_Ref(141) = 111 ;CM3 variable length
+Ext_User_Prm_Data_Ref(35) = 51 ;CM4 scan configuration 
+Ext_User_Prm_Data_Ref(144) = 113 ;CM4 slave address 
+Ext_User_Prm_Data_Ref(145) = 115 ;CM4 variable number
+Ext_User_Prm_Data_Ref(144) = 114 ;CM4 variable length
+Ext_User_Prm_Data_Ref(35) = 52 ;CM5 scan configuration 
+Ext_User_Prm_Data_Ref(147) = 116 ;CM5 slave address 
+Ext_User_Prm_Data_Ref(148) = 118 ;CM5 variable number
+Ext_User_Prm_Data_Ref(147) = 117 ;CM5 variable length
+Ext_User_Prm_Data_Ref(35) = 53 ;CM6 scan configuration 
+Ext_User_Prm_Data_Ref(150) = 119 ;CM6 slave address 
+Ext_User_Prm_Data_Ref(151) = 121 ;CM6 variable number
+Ext_User_Prm_Data_Ref(150) = 120 ;CM6 variable length
+Ext_User_Prm_Data_Ref(35) = 54 ;CM7 scan configuration 
+Ext_User_Prm_Data_Ref(153) = 122 ;CM7 slave address 
+Ext_User_Prm_Data_Ref(154) = 124 ;CM7 variable number
+Ext_User_Prm_Data_Ref(153) = 123 ;CM7 variable length
+Ext_User_Prm_Data_Ref(35) = 55 ;Scan configuration CM8 
+Ext_User_Prm_Data_Ref(156) = 125 ;CM8 slave address 
+Ext_User_Prm_Data_Ref(157) = 127 ;CM8 variable number
+Ext_User_Prm_Data_Ref(156) = 126 ;CM8 variable length
+Ext_User_Prm_Data_Ref(36) = 56 ;Scan configuration CM9 
+Ext_User_Prm_Data_Ref(159) = 152 ;CM9 slave address 
+Ext_User_Prm_Data_Ref(160) = 154 ;CM9 variable number
+Ext_User_Prm_Data_Ref(159) = 153 ;CM9 variable length
+Ext_User_Prm_Data_Ref(36) = 57 ;Scan configuration CM10 
+Ext_User_Prm_Data_Ref(162) = 155 ;CM10 slave address 
+Ext_User_Prm_Data_Ref(163) = 157 ;CM10 variable number
+Ext_User_Prm_Data_Ref(162) = 156 ;CM10 variable length
+Ext_User_Prm_Data_Ref(36) = 58 ;Scan configuration CM11 
+Ext_User_Prm_Data_Ref(165) = 158 ;CM11 slave address 
+Ext_User_Prm_Data_Ref(166) = 160 ;CM11 variable number
+Ext_User_Prm_Data_Ref(165) = 159 ;CM11 variable length
+Ext_User_Prm_Data_Ref(36) = 59 ;Scan configuration CM12 
+Ext_User_Prm_Data_Ref(168) = 161 ;CM12 slave address 
+Ext_User_Prm_Data_Ref(169) = 163 ;CM12 variable number
+Ext_User_Prm_Data_Ref(168) = 162 ;CM12 variable length
+Ext_User_Prm_Data_Ref(36) = 60 ;Scan configuration CM13 
+Ext_User_Prm_Data_Ref(171) = 164 ;CM13 slave address 
+Ext_User_Prm_Data_Ref(172) = 166 ;CM13 variable number
+Ext_User_Prm_Data_Ref(171) = 165 ;CM13 variable length
+Ext_User_Prm_Data_Ref(36) = 61 ;Scan configuration CM14 
+Ext_User_Prm_Data_Ref(174) = 167 ;CM14 slave address 
+Ext_User_Prm_Data_Ref(175) = 169 ;CM14 variable number
+Ext_User_Prm_Data_Ref(174) = 168 ;CM14 variable length
+Ext_User_Prm_Data_Ref(36) = 62 ;Scan configuration CM15 
+Ext_User_Prm_Data_Ref(177) = 170 ;CM15 slave address 
+Ext_User_Prm_Data_Ref(178) = 172 ;CM15 variable number
+Ext_User_Prm_Data_Ref(177) = 171 ;CM15 variable length
+Ext_User_Prm_Data_Ref(36) = 63 ;Scan configuration CM16 
+Ext_User_Prm_Data_Ref(180) = 173 ;CM16 slave address 
+Ext_User_Prm_Data_Ref(181) = 175 ;CM16 variable number
+Ext_User_Prm_Data_Ref(180) = 174 ;CM16 variable length
+Ext_User_Prm_Data_Ref(37) = 64 ;Scan configuration CM17 
+Ext_User_Prm_Data_Ref(183) = 224 ;CM17 slave address 
+Ext_User_Prm_Data_Ref(184) = 226 ;CM17 variable number
+Ext_User_Prm_Data_Ref(183) = 225 ;CM17 variable length
+Ext_User_Prm_Data_Ref(37) = 65 ;Scan configuration CM18 
+Ext_User_Prm_Data_Ref(186) = 227 ;CM18 slave address 
+Ext_User_Prm_Data_Ref(187) = 229 ;CM18 variable number
+Ext_User_Prm_Data_Ref(186) = 228 ;CM18 variable length
+Ext_User_Prm_Data_Ref(37) = 66 ;Scan configuration CM19 
+Ext_User_Prm_Data_Ref(189) = 230 ;CM19 slave address 
+Ext_User_Prm_Data_Ref(190) = 232 ;CM19 variable number
+Ext_User_Prm_Data_Ref(189) = 231 ;CM19 variable length
+Ext_User_Prm_Data_Ref(37) = 67 ;Scan configuration CM20 
+Ext_User_Prm_Data_Ref(192) = 233 ;CM20 slave address 
+Ext_User_Prm_Data_Ref(193) = 235 ;CM20 variable number
+Ext_User_Prm_Data_Ref(192) = 234 ;CM20 variable length
+Ext_User_Prm_Data_Ref(37) = 68 ;Scan configuration CM21 
+Ext_User_Prm_Data_Ref(195) = 236 ;CM21 slave address 
+Ext_User_Prm_Data_Ref(196) = 238 ;CM21 variable number
+Ext_User_Prm_Data_Ref(195) = 237 ;CM21 variable length
+Ext_User_Prm_Data_Ref(37) = 69 ;Scan configuration CM22 
+Ext_User_Prm_Data_Ref(198) = 239 ;CM22 slave address 
+Ext_User_Prm_Data_Ref(199) = 241 ;CM22 variable number
+Ext_User_Prm_Data_Ref(198) = 240 ;CM22 variable length
+Ext_User_Prm_Data_Ref(37) = 70 ;Scan configuration CM23 
+Ext_User_Prm_Data_Ref(201) = 242 ;CM23 slave address 
+Ext_User_Prm_Data_Ref(202) = 244 ;CM23 variable number
+Ext_User_Prm_Data_Ref(201) = 243 ;CM23 variable length
+Ext_User_Prm_Data_Ref(37) = 71 ;Scan configuration CM24 
+Ext_User_Prm_Data_Ref(204) = 245 ;CM24 slave address 
+Ext_User_Prm_Data_Ref(205) = 247 ;CM24 variable number
+Ext_User_Prm_Data_Ref(204) = 246 ;CM24 variable length
+Ext_User_Prm_Data_Ref(38) = 72 ;Scan configuration CM25 
+Ext_User_Prm_Data_Ref(207) = 248 ;CM25 slave address 
+Ext_User_Prm_Data_Ref(208) = 250 ;CM25 variable number
+Ext_User_Prm_Data_Ref(207) = 249 ;CM25 variable length
+Ext_User_Prm_Data_Ref(38) = 73 ;Scan configuration CM26 
+Ext_User_Prm_Data_Ref(210) = 251 ;CM26 slave address 
+Ext_User_Prm_Data_Ref(211) = 253 ;CM26 variable number
+Ext_User_Prm_Data_Ref(210) = 252 ;CM26 variable length
+Ext_User_Prm_Data_Ref(38) = 74 ;Scan configuration CM27 
+Ext_User_Prm_Data_Ref(213) = 254 ;CM27 slave address 
+Ext_User_Prm_Data_Ref(214) = 256 ;CM27 variable number
+Ext_User_Prm_Data_Ref(213) = 255 ;CM27 variable length
+Ext_User_Prm_Data_Ref(38) = 75 ;Scan configuration CM28 
+Ext_User_Prm_Data_Ref(216) = 257 ;CM28 slave address 
+Ext_User_Prm_Data_Ref(217) = 259 ;CM28 variable number
+Ext_User_Prm_Data_Ref(216) = 258 ;CM28 variable length
+Ext_User_Prm_Data_Ref(38) = 76 ;Scan configuration CM29 
+Ext_User_Prm_Data_Ref(219) = 260 ;CM29 slave address 
+Ext_User_Prm_Data_Ref(220) = 262 ;CM29 variable number
+Ext_User_Prm_Data_Ref(219) = 261 ;CM29 variable length
+Ext_User_Prm_Data_Ref(38) = 77 ;Scan configuration CM30 
+Ext_User_Prm_Data_Ref(222) = 263 ;CM30 slave address 
+Ext_User_Prm_Data_Ref(223) = 265 ;CM30 variable number
+Ext_User_Prm_Data_Ref(222) = 264 ;CM30 variable length
+Ext_User_Prm_Data_Ref(38) = 78 ;Scan configuration CM31 
+Ext_User_Prm_Data_Ref(225) = 266 ;CM31 slave address 
+Ext_User_Prm_Data_Ref(226) = 268 ;CM31 variable number
+Ext_User_Prm_Data_Ref(225) = 267 ;CM31 variable length
+Ext_User_Prm_Data_Ref(38) = 79 ;Scan configuration CM32 
+Ext_User_Prm_Data_Ref(228) = 269 ;CM32 slave address 
+Ext_User_Prm_Data_Ref(229) = 271 ;CM32 variable number
+Ext_User_Prm_Data_Ref(228) = 270 ;CM32 variable length
+ 
+
+Module = "PPO Typ 1" 0xF3, 0xC0, 0xC7, 0xC8;
+EndModule
+
+Module = "PPO Typ 2" 0xF3, 0xC0, 0xCF, 0xD0;
+EndModule
+
+Module = "PPO Typ 3" 0xF3, 0xC0, 0xDF, 0xE0;
+EndModule
+
+Module = "PPO Typ 4" 0xF3, 0xC0, 0xFD, 0xFD;
+EndModule
+
+
+

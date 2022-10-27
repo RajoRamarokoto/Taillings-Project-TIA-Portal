@@ -1,0 +1,132 @@
+<HMIMTConfig>
+  <MainMenu Name="NewHMIMainMenu" Visible="-1" Enabled="-1" MaskColor="12632256" PasswordLevel="0" IsDefaultMenu="1" />
+  <Information Version="7.0.2" Company="SIEMENS AG" Creator="SIEMENS AG" />
+  <Toolbars>
+    <Toolbar Name="Toolbar_1" Enabled="-1" ToolBarStyle="3" ImageSize="32" MaskColor="16711935" Alignment="4" Visible="-1" PasswordLevel="0" Dockable="0" UserData="" ID="1">
+      <ToolbarItems>
+        <ToolbarItem Name="Toolbar_element_1" Enabled="-1" Visible="-1" PasswordLevel="0" Image="Ambatovy.jpg" UserData="" Key="OnMenuToolbarClick1_14815233_257091" Separator="0" ID="2">
+          <LDTexts>
+            <LDText LCID="1033" Text="        HOME         " />
+          </LDTexts>
+          <LDTooltipTexts>
+            <LDText LCID="1033" Text="" />
+          </LDTooltipTexts>
+        </ToolbarItem>
+        <ToolbarItem Name="Toolbar_element_3" Enabled="-1" Visible="-1" PasswordLevel="0" Image="Ambatovy.jpg" UserData="" Key="OnMenuToolbarClick3_14815233_257092" Separator="0" ID="3">
+          <LDTexts>
+            <LDText LCID="1033" Text="   OVERVIEW   " />
+          </LDTexts>
+          <LDTooltipTexts>
+            <LDText LCID="1033" Text="" />
+          </LDTooltipTexts>
+        </ToolbarItem>
+        <ToolbarItem Name="Toolbar_element_2" Enabled="-1" Visible="-1" PasswordLevel="0" Image="Barge1.jpg" UserData="" Key="OnMenuToolbarClick2_14815233_257093" Separator="0" ID="4">
+          <LDTexts>
+            <LDText LCID="1033" Text="        BARGE        " />
+          </LDTexts>
+          <LDTooltipTexts>
+            <LDText LCID="1033" Text="" />
+          </LDTooltipTexts>
+        </ToolbarItem>
+        <ToolbarItem Name="Toolbar_element_4" Enabled="-1" Visible="-1" PasswordLevel="0" Image="Valve station.jpg" UserData="" Key="OnMenuToolbarClick4_14815233_257129" Separator="0" ID="5">
+          <LDTexts>
+            <LDText LCID="1033" Text="VALVE STATION" />
+          </LDTexts>
+          <LDTooltipTexts>
+            <LDText LCID="1033" Text="" />
+          </LDTooltipTexts>
+        </ToolbarItem>
+        <ToolbarItem Name="Toolbar_element_9" Enabled="-1" Visible="-1" PasswordLevel="0" Image="booster2.jpg" UserData="" Key="OnMenuToolbarClick9_14815233_257130" Separator="0" ID="6">
+          <LDTexts>
+            <LDText LCID="1033" Text=" BOOSTER PUMP" />
+          </LDTexts>
+          <LDTooltipTexts>
+            <LDText LCID="1033" Text="" />
+          </LDTooltipTexts>
+        </ToolbarItem>
+        <ToolbarItem Name="Toolbar_element_10" Enabled="-1" Visible="-1" PasswordLevel="0" Image="Pump House1.jpg" UserData="" Key="OnMenuToolbarClick10_14815233_257131" Separator="0" ID="7">
+          <LDTexts>
+            <LDText LCID="1033" Text="      96PH21      " />
+          </LDTexts>
+          <LDTooltipTexts>
+            <LDText LCID="1033" Text="" />
+          </LDTooltipTexts>
+        </ToolbarItem>
+        <ToolbarItem Name="Toolbar_element_11" Enabled="-1" Visible="-1" PasswordLevel="0" Image="Pump House1.jpg" UserData="" Key="OnMenuToolbarClick11_14815233_257132" Separator="0" ID="8">
+          <LDTexts>
+            <LDText LCID="1033" Text="      96PH22      " />
+          </LDTexts>
+          <LDTooltipTexts>
+            <LDText LCID="1033" Text="" />
+          </LDTooltipTexts>
+        </ToolbarItem>
+        <ToolbarItem Name="Toolbar_element_12" Enabled="-1" Visible="-1" PasswordLevel="0" Image="Pump House1.jpg" UserData="" Key="OnMenuToolbarClick12_14815233_257133" Separator="0" ID="9">
+          <LDTexts>
+            <LDText LCID="1033" Text="      96PH23       " />
+          </LDTexts>
+          <LDTooltipTexts>
+            <LDText LCID="1033" Text="" />
+          </LDTooltipTexts>
+        </ToolbarItem>
+        <ToolbarItem Name="Toolbar_element_13" Enabled="-1" Visible="-1" PasswordLevel="0" Image="Pump House1.jpg" UserData="" Key="OnMenuToolbarClick13_14815233_257134" Separator="0" ID="10">
+          <LDTexts>
+            <LDText LCID="1033" Text="      96PH24       " />
+          </LDTexts>
+          <LDTooltipTexts>
+            <LDText LCID="1033" Text="" />
+          </LDTooltipTexts>
+        </ToolbarItem>
+        <ToolbarItem Name="Toolbar_element_14" Enabled="-1" Visible="-1" PasswordLevel="0" Image="Pump House1.jpg" UserData="" Key="OnMenuToolbarClick14_14815233_257135" Separator="0" ID="11">
+          <LDTexts>
+            <LDText LCID="1033" Text="          96PH25        " />
+          </LDTexts>
+          <LDTooltipTexts>
+            <LDText LCID="1033" Text="" />
+          </LDTooltipTexts>
+        </ToolbarItem>
+        <ToolbarItem Name="Toolbar_element_8" Enabled="-1" Visible="-1" PasswordLevel="0" Image="Alarm1.png" UserData="" Key="OnMenuToolbarClick8_14815233_262227" Separator="0" ID="12">
+          <LDTexts>
+            <LDText LCID="1033" Text="        Alarm        " />
+          </LDTexts>
+          <LDTooltipTexts>
+            <LDText LCID="1033" Text="" />
+          </LDTooltipTexts>
+        </ToolbarItem>
+        <ToolbarItem Name="Toolbar_element_7" Enabled="-1" Visible="-1" PasswordLevel="0" Image="maintenance2.png" UserData="" Key="OnMenuToolbarClick7_14815233_262226" Separator="0" ID="13">
+          <LDTexts>
+            <LDText LCID="1033" Text=" Maintenance" />
+          </LDTexts>
+          <LDTooltipTexts>
+            <LDText LCID="1033" Text="" />
+          </LDTooltipTexts>
+        </ToolbarItem>
+        <ToolbarItem Name="Toolbar_element_15" Enabled="-1" Visible="-1" PasswordLevel="0" Image="ExitRuntime_TP1200_Comfort_TR.png" UserData="" Key="OnMenuToolbarClick15_14815233_257138" Separator="0" ID="14">
+          <LDTexts>
+            <LDText LCID="1033" Text=" ExitRuntime " />
+          </LDTexts>
+          <LDTooltipTexts>
+            <LDText LCID="1033" Text="" />
+          </LDTooltipTexts>
+        </ToolbarItem>
+      </ToolbarItems>
+      <LDTexts>
+        <LDText LCID="1033" Text="" />
+      </LDTexts>
+    </Toolbar>
+  </Toolbars>
+  <Scripts>
+    <Script Src="ScriptLib\OnMenuToolbarClick1_14815233_257091.bmo" />
+    <Script Src="ScriptLib\OnMenuToolbarClick2_14815233_257093.bmo" />
+    <Script Src="ScriptLib\OnMenuToolbarClick3_14815233_257092.bmo" />
+    <Script Src="ScriptLib\OnMenuToolbarClick4_14815233_257129.bmo" />
+    <Script Src="ScriptLib\OnMenuToolbarClick9_14815233_257130.bmo" />
+    <Script Src="ScriptLib\OnMenuToolbarClick10_14815233_257131.bmo" />
+    <Script Src="ScriptLib\OnMenuToolbarClick11_14815233_257132.bmo" />
+    <Script Src="ScriptLib\OnMenuToolbarClick12_14815233_257133.bmo" />
+    <Script Src="ScriptLib\OnMenuToolbarClick13_14815233_257134.bmo" />
+    <Script Src="ScriptLib\OnMenuToolbarClick14_14815233_257135.bmo" />
+    <Script Src="ScriptLib\OnMenuToolbarClick15_14815233_257138.bmo" />
+    <Script Src="ScriptLib\OnMenuToolbarClick7_14815233_262226.bmo" />
+    <Script Src="ScriptLib\OnMenuToolbarClick8_14815233_262227.bmo" />
+  </Scripts>
+</HMIMTConfig>

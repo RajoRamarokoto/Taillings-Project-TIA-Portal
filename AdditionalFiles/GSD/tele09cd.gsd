@@ -1,0 +1,151 @@
+;===========================================================
+; GSD File for  TELEMECANIQUE - ATV 71
+;	Groupe SCHNEIDER
+; Copyright (C) SCHNEIDER 2007
+; DPV1 functionalities
+;
+; Date  : 06/08/2007
+; File  : TELE09CD.gsd
+;===========================================================
+;
+;
+#Profibus_DP
+; Unit-Definition-List:
+GSD_Revision        = 5
+;
+Vendor_Name         = "Telemecanique"
+Model_Name          = "ATV71-Profibus-DPV1-Modular"
+Revision            = "V1.0"
+Ident_Number        = 0x09CD
+Protocol_Ident      = 0
+Station_Type        = 0
+FMS_supp            = 0
+Hardware_Release    = "Revision -"
+Software_Release    = "V1.2"
+;
+9.6_supp            = 1
+19.2_supp           = 1
+93.75_supp          = 1
+45.45_supp          = 1
+187.5_supp          = 1
+500_supp            = 1
+1.5M_supp           = 1
+3M_supp             = 1
+6M_supp             = 1
+12M_supp            = 1
+;
+MaxTsdr_9.6         = 60
+MaxTsdr_19.2        = 60
+MaxTsdr_45.45       = 60
+MaxTsdr_93.75       = 60
+MaxTsdr_187.5       = 60
+MaxTsdr_500         = 100
+MaxTsdr_1.5M        = 150
+MaxTsdr_3M          = 250
+MaxTsdr_6M          = 450
+MaxTsdr_12M         = 800
+;
+Redundancy          = 0
+; Redundancy Issue change for Siemens PLC S7 400H:
+Slave_Redundancy_Supp = 0
+PrmCmd_Supp = 0
+;
+Repeater_Ctrl_Sig   = 2
+24V_Pins            = 0
+Implementation_Type = "SPC3"
+Bitmap_Device="ATV71"
+Bitmap_SF="ATV71"
+
+; Slave-Specification:
+Freeze_Mode_supp    = 1
+Sync_Mode_supp      = 1
+Auto_Baud_supp      = 1
+Set_Slave_Add_supp  = 0
+Min_Slave_Intervall = 1
+Ident_Maintenance_supp = 1
+;
+Modular_Station     = 1
+Modul_Offset        = 0
+Max_Module          = 1                         
+;
+Fail_Safe           = 0
+Slave_Family        = 1@TELE
+User_Prm_Data_Len   = 3
+User_Prm_Data       = 0x80,0x00,0x00
+
+Max_Diag_Data_Len   = 6
+
+;=============================================================================
+; User Parameter preset
+;=============================================================================
+Max_User_Prm_Data_Len   = 3
+Ext_User_Prm_Data_Const(0) = 0x80,0x00,0x00;DPV1 parameters
+;DPV1 status1 = 0x00 =>
+;       Bit2 = 0 WD_Base=10ms (1ms=1)
+;       Bit7 = 1 DPV1 Enable (Disable=0)
+;DPV1 status2 = 0x00 =>
+;       Bit0 = 0 ChkCfg 
+;DPV1 status3 = 0x00 =>
+;       alarm not implemented
+;/////////////////////////////////////////////////////////////
+
+
+;=============================================================================
+; DPV1
+;=============================================================================
+
+;
+DPV1_Slave = 1
+C1_Read_Write_supp = 1
+C2_Read_Write_supp = 1
+C1_Max_Data_Len = 120
+C2_Max_Data_Len = 120
+C1_Response_Timeout = 1
+C2_Response_Timeout = 1
+C1_Read_Write_required = 0
+C2_Read_Write_required = 0
+C2_Max_Count_Channels = 1
+Max_Initiate_PDU_Length = 55
+Diagnostic_Alarm_supp = 0
+Process_Alarm_supp = 0
+Pull_Plug_Alarm_supp = 0
+Status_Alarm_supp = 0
+Update_Alarm_supp = 0
+Manufacturer_Specific_Alarm_supp = 0
+Extra_Alarm_SAP_supp = 0
+Alarm_Sequence_Mode_Count = 0
+Alarm_Type_Mode_supp = 0
+Diagnostic_Alarm_required = 0
+Process_Alarm_required = 0
+Pull_Plug_Alarm_required = 0
+Status_Alarm_required = 0
+Update_Alarm_required = 0
+Manufacturer_Specific_Alarm_required = 0
+DPV1_Data_Types = 0
+WD_Base_1ms_supp = 1
+Check_Cfg_Mode = 0
+Max_Input_Len = 30
+Max_Output_Len = 30
+Max_Data_Len = 60
+;
+Module = "Periodic(10-10) Aperiodic(4-4)" 0xF3, 0x79;
+1
+EndModule
+
+Module = "Periodic(10-10)" 0x79;
+2
+EndModule
+
+Module = "Periodic(2-2)" 0x71;
+3
+EndModule
+
+Module = "Periodic(6-6)" 0x75;
+4
+EndModule
+;
+
+
+
+
+

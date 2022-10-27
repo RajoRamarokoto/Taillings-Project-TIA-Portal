@@ -1,0 +1,11 @@
+﻿<CCAlarmFilterStorage>
+  <CCAlarmFilter>
+    <Name>Filter_1</Name>
+    <SQL></SQL>
+    <Comment></Comment>
+    <CreateUser>Administrator</CreateUser>
+    <CreateDate>8/16/2022 6:56:16 PM</CreateDate>
+    <LastUser>Administrator</LastUser>
+    <LastDate>8/16/2022 6:56:16 PM</LastDate>
+  </CCAlarmFilter>
+</CCAlarmFilterStorage>

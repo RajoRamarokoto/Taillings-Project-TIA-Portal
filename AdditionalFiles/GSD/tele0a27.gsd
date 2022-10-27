@@ -1,0 +1,1356 @@
+;********************* GSD-File for Telemecanique **********************************
+; ==================================================================================*
+;* PROFIBUS GSD description file TELE0A27.GSD                                     *
+;*                                                                                  *
+;* Vendor:	 Telemecanique                                                           *
+;* Manufacturer: Schneider Electric (ID297)                                         *
+;*                                                                                  *
+;* ================================================================================ *
+;*                                                                                  *
+;* Model:           LTMR - Profibus TeSysT                                          *
+;* Description:	 PROFIBUS DP Slave Device,                                       *
+;*                  Motor Management Starter application profile                    *
+;* Order Number:    TeSys T                                                         *
+;* Author:	         SCHNEIDER ELECTRIC (ALA)                                        *
+;*                                                                                  *
+;* -------------------------------------------------------------------------------- *
+;* Contact:	    SCHNEIDER ELECTRIC SUPPORT   			                         *
+;* -------------------------------------------------------------------------------- *
+;*                                                                                  *
+;* Modification history:                                                            *
+;* -------------------------------------------------------------------------------- *
+;//:------------------------------------------------------------------------------- *
+;//:                                                                                 
+;//:  ATTENTION:                                                                     
+;//:  ==========                                                                     
+;//:  Changes in this file can cause configuration or communication problems.        
+;//:  This file is compatible with the firmware of the device.                       
+;//:                                                                                 
+;//:---------------------------------------------------------------------------      
+#Profibus_DP
+
+;------------------------------------------------------------------------------ 
+; Unit Definition List 
+;------------------------------------------------------------------------------ 
+GSD_Revision        = 5 
+Vendor_Name         = "Telemecanique" 
+Model_Name          = "LTMR - TeSys T Profibus V1.2" 
+Revision            = "1.2" 
+Ident_Number        = 0x0A27                     ; PNO-Identnumber  
+Protocol_Ident      = 0                          ; Profibus-DP 
+Station_Type        = 0                          ; DP-Slave 
+FMS_supp            = 0                          ;  
+Hardware_Release    = "3.0" 
+Software_Release    = "1.1" 
+9.6_supp            = 1 
+19.2_supp           = 1 
+45.45_supp          = 1 
+93.75_supp          = 1 
+187.5_supp          = 1 
+500_supp            = 1 
+1.5M_supp           = 1 
+3M_supp             = 1 
+6M_supp             = 1 
+12M_supp            = 1 
+MaxTsdr_9.6         = 15 
+MaxTsdr_19.2        = 15 
+MaxTsdr_45.45       = 15 
+MaxTsdr_93.75       = 15 
+MaxTsdr_187.5       = 15 
+MaxTsdr_500         = 15 
+MaxTsdr_1.5M        = 20 
+MaxTsdr_3M          = 35 
+MaxTsdr_6M          = 50 
+MaxTsdr_12M         = 95 
+
+Redundancy          = 0                          ; no redundant transmission 
+Repeater_Ctrl_Sig   = 2                          ; signal CNTR-P (TTL level) connected 
+24V_Pins            = 0                          ; signals M24V and P24V are used as inputs 
+
+; DP Slave Specifications 
+Freeze_Mode_supp    = 0 
+Sync_Mode_supp      = 0 
+Auto_Baud_supp      = 1 
+Set_Slave_Add_supp  = 0 
+Min_Slave_Intervall = 6 
+Modular_Station     = 1 
+Max_Module          = 1 
+Max_Input_Len       = 18 
+Max_Output_Len      = 14 
+Max_Data_Len        = 32 
+Max_Diag_Data_Len   = 44 
+Slave_Family        = 2                       ; switching device 
+
+Max_User_Prm_Data_Len    = 237 
+Ext_User_Prm_Data_Const(0) = 0x00, 0x00, 0x00 
+
+Ident_Maintenance_supp   = 1                  ; I&M functions supported
+DPV1_Slave 	             = 1 
+C1_Read_Write_supp       = 1 
+C2_Read_Write_supp       = 1                  ; MS2 read and write functions, only for I&M
+C1_Max_Data_Len          = 68                 ; value 0,48..240 are allowed 
+C2_Max_Data_Len          = 68                 ; value 0,48..240 are allowed 
+C1_Response_Timeout      = 60000 
+C2_Response_Timeout      = 60000 
+C2_Max_Count_Channels    = 3                  ; max 3 MS2 channels are supported in parallel
+Max_Initiate_PDU_Length  = 52                 ; value 0,52..244 are allowed
+
+DPV1_Data_Types          = 0                  ; 1 = data types supported (DP V2) 
+Check_Cfg_Mode           = 0                  ; 1 = slave accept other configuration 
+
+;------------------------------------------------------------------------------ 
+
+Implementation_Type ="VPC3 solution"
+Bitmap_Device = "TESYST_R" 
+Bitmap_Diag   = "TESYST_D" 
+Bitmap_SF     = "TESYST_S" 
+ 
+;------------------------------------------------------------------------------ 
+; DPV1 Parameter Data 
+;------------------------------------------------------------------------------ 
+
+PrmText = 1 
+  Text(0) = "not active" 
+  Text(1) = "active" 
+EndPrmText 
+
+ExtUserPrmData = 1 "DPV1-Services (Class 1)" 
+  Bit(7) 1 0-1 
+  Prm_Text_Ref = 1 
+EndExtUserPrmData 
+Ext_User_Prm_Data_Ref(0) = 1 
+
+;------------------------------------------------------------------------------ 
+; Manufacturor specific Parameters Descriptions 
+;------------------------------------------------------------------------------ 
+
+PrmText = 31 
+  Text(0) = "Disable"
+  Text(1) = "Enable"
+EndPrmText  
+
+PrmText = 32 
+  Text(1) = "Manual or HMI"
+  Text(2) = "Remote by network"
+  Text(4) = "Automatic"
+EndPrmText  
+
+PrmText = 33 
+  Text(0) = "None"
+  Text(1) = "Even"
+EndPrmText  
+
+PrmText = 34 
+  Text(0) = "LSW first (little endian)"
+  Text(1) = "MSW first (big endian)"
+EndPrmText  
+
+PrmText = 35 
+  Text(0) = "Manual reset"
+  Text(1) = "1 attempt"
+  Text(2) = "2 attempts"
+  Text(3) = "3 attempts"
+  Text(4) = "4 attempts"
+  Text(5) = "Automatic reset"
+EndPrmText  
+
+PrmText = 36 
+  Text(0) = "Hold LO1 LO2"
+  Text(1) = "Run (2-step) or Off"
+  Text(2) = "LO1, LO2 Off"
+  Text(3) = "LO1, LO2 On (overld, ind, cust) "
+  Text(4) = "LO1 On or Off (2-step)"
+  Text(5) = "LO2 On or Off (2-step)"
+EndPrmText  
+
+PrmText = 37 
+  Text(0) = "Terminal strips"
+  Text(1) = "HMI"
+EndPrmText  
+
+PrmText = 38 
+  Text(0) = "Stop during transition"
+  Text(1) = "No stop during transition"
+EndPrmText  
+
+ExtUserPrmData = 31 "Motor transition timeout" ;541.*
+ Unsigned16 10 0-9999 
+EndExtUserPrmData
+
+ExtUserPrmData = 32 "Th overload fault timeout" ;547.*
+ Unsigned16 10 1-300 
+EndExtUserPrmData
+
+PrmText= 39
+  Text(0) = " "
+EndPrmText
+ExtUserPrmData = 33 "Reserved" ;548.*
+ Unsigned16 0 0-0 
+  Prm_Text_Ref = 39
+EndExtUserPrmData
+
+ExtUserPrmData = 34 "Motor temp fault threshold" ;549.*
+ Unsigned16 200 200-65000 
+EndExtUserPrmData
+
+ExtUserPrmData = 35 "Motor temp warning threshold" ;550.*
+ Unsigned16 200 200-65000 
+EndExtUserPrmData
+
+PrmText= 40
+  Text(0) = " "
+EndPrmText
+ExtUserPrmData = 36 "Reserved" ;551.*
+ Unsigned16 0 0-0 
+  Prm_Text_Ref = 40
+EndExtUserPrmData
+
+PrmText= 41
+  Text(0) = " "
+EndPrmText
+ExtUserPrmData = 37 "Reserved" ;552.*
+ Unsigned16 0 0-0 
+  Prm_Text_Ref = 41
+EndExtUserPrmData
+
+ExtUserPrmData = 38 "Rapid cycle lockout timeout" ;553.*
+ Unsigned16 0 0-9999 
+EndExtUserPrmData
+
+PrmText= 42
+  Text(0) = " "
+EndPrmText
+ExtUserPrmData = 39 "Reserved" ;554.*
+ Unsigned16 0 0-0 
+  Prm_Text_Ref = 42
+EndExtUserPrmData
+
+ExtUserPrmData = 40 "phI loss fault timeout" ;555.*
+ Unsigned16 30 1-300 
+EndExtUserPrmData
+
+ExtUserPrmData = 41 "Overcurrent fault timeout" ;556.*
+ Unsigned16 10 1-250 
+EndExtUserPrmData
+
+ExtUserPrmData = 42 "Overcurrent fault threshold" ;557.*
+ Unsigned16 200 20-800 
+EndExtUserPrmData
+
+ExtUserPrmData = 43 "Overcurrent warning thresh" ;558.*
+ Unsigned16 200 20-800 
+EndExtUserPrmData
+
+ExtUserPrmData = 44 "Ext Iground fault timeout" ;562.*
+ Unsigned16 50 10-2500 
+EndExtUserPrmData
+
+ExtUserPrmData = 45 "Ext Iground fault threshold" ;563.*
+ Unsigned16 100 2-2000 
+EndExtUserPrmData
+
+ExtUserPrmData = 46 "Ext Iground warning thresh" ;564.*
+ Unsigned16 100 2-2000 
+EndExtUserPrmData
+
+ExtUserPrmData = 47 "Motor nominal voltage" ;565.*
+ Unsigned16 400 110-690 
+EndExtUserPrmData
+
+ExtUserPrmData = 48 "phV imb fault timeout start" ;566.*
+ Unsigned16 7 2-200 
+EndExtUserPrmData
+
+ExtUserPrmData = 49 "phV imb fault timeout run" ;567.*
+ Unsigned16 20 2-200 
+EndExtUserPrmData
+
+ExtUserPrmData = 50 "phV imb fault threshold" ;568.*
+ Unsigned16 10 3-15 
+EndExtUserPrmData
+
+ExtUserPrmData = 51 "phV imb warning threshold" ;569.*
+ Unsigned16 10 3-15 
+EndExtUserPrmData
+
+ExtUserPrmData = 52 "Overvoltage fault timeout" ;570.*
+ Unsigned16 30 2-250 
+EndExtUserPrmData
+
+ExtUserPrmData = 53 "Overvoltage fault threshold" ;571.*
+ Unsigned16 110 101-115 
+EndExtUserPrmData
+
+ExtUserPrmData = 54 "Overvoltage warning thresh" ;572.*
+ Unsigned16 110 101-115 
+EndExtUserPrmData
+
+ExtUserPrmData = 55 "Undervoltage fault timeout" ;573.*
+ Unsigned16 30 2-250 
+EndExtUserPrmData
+
+ExtUserPrmData = 56 "Undervoltage fault threshold" ;574.*
+ Unsigned16 85 70-99 
+EndExtUserPrmData
+
+ExtUserPrmData = 57 "Undervoltage warning thresh" ;575.*
+ Unsigned16 85 70-99 
+EndExtUserPrmData
+
+ExtUserPrmData = 58 "phV loss fault timeout" ;576.*
+ Unsigned16 30 1-300 
+EndExtUserPrmData
+
+ExtUserPrmData = 59 "Load shedding enable" ;577.0
+  Bit(0) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 60 "Load shedding timeout" ;578.*
+ Unsigned16 10 1-9999 
+EndExtUserPrmData
+
+ExtUserPrmData = 61 "Load shedding threshold" ;579.*
+ Unsigned16 70 68-115 
+EndExtUserPrmData
+
+ExtUserPrmData = 62 "Load shedding restart Tout" ;580.*
+ Unsigned16 10 1-9999 
+EndExtUserPrmData
+
+ExtUserPrmData = 63 "Load shedding restart thresh" ;581.*
+ Unsigned16 90 68-115 
+EndExtUserPrmData
+
+PrmText= 43
+  Text(0) = " "
+EndPrmText
+ExtUserPrmData = 64 "Reserved" ;582.*
+ Unsigned16 0 0-0 
+  Prm_Text_Ref = 43
+EndExtUserPrmData
+
+ExtUserPrmData = 65 "Motor nominal power" ;583.*
+ Unsigned16 75 1-9999 
+EndExtUserPrmData
+
+ExtUserPrmData = 66 "Over power fault timeout" ;584.*
+ Unsigned16 60 1-100 
+EndExtUserPrmData
+
+ExtUserPrmData = 67 "Over power fault threshold" ;585.*
+ Unsigned16 150 20-800 
+EndExtUserPrmData
+
+ExtUserPrmData = 68 "Overpower warning threshold" ;586.*
+ Unsigned16 150 20-800 
+EndExtUserPrmData
+
+ExtUserPrmData = 69 "Under power fault timeout" ;587.*
+ Unsigned16 60 1-100 
+EndExtUserPrmData
+
+ExtUserPrmData = 70 "Under power fault threshold" ;588.*
+ Unsigned16 20 20-800 
+EndExtUserPrmData
+
+ExtUserPrmData = 71 "Under power warning thresh" ;589.*
+ Unsigned16 30 20-800 
+EndExtUserPrmData
+
+ExtUserPrmData = 72 "Under PFact fault timeout" ;590.*
+ Unsigned16 100 10-250 
+EndExtUserPrmData
+
+ExtUserPrmData = 73 "Under PFact fault thresh" ;591.*
+ Unsigned16 60 0-100 
+EndExtUserPrmData
+
+ExtUserPrmData = 74 "Under PFact warning thresh" ;592.*
+ Unsigned16 60 0-100 
+EndExtUserPrmData
+
+ExtUserPrmData = 75 "Over PFact fault timeout" ;593.*
+ Unsigned16 100 10-250 
+EndExtUserPrmData
+
+ExtUserPrmData = 76 "Over PFact fault threshold" ;594.*
+ Unsigned16 90 0-100 
+EndExtUserPrmData
+
+ExtUserPrmData = 77 "Over PFact warning threshold" ;595.*
+ Unsigned16 90 0-100 
+EndExtUserPrmData
+
+ExtUserPrmData = 78 "Reset mode" ;602.0-2
+  BitArea(0-2) 1 1-4 
+  Prm_Text_Ref = 32 
+EndExtUserPrmData
+
+ExtUserPrmData = 79 "HMI port parity setting" ;602.3
+  Bit(3) 1 0-1 
+  Prm_Text_Ref = 33 
+EndExtUserPrmData
+
+ExtUserPrmData = 80 "HMI port endian" ;602.9
+  Bit(1) 1 0-1 
+  Prm_Text_Ref = 34 
+EndExtUserPrmData
+
+ExtUserPrmData = 81 "Network port endian" ;602.10
+  Bit(2) 1 0-1 
+  Prm_Text_Ref = 34 
+EndExtUserPrmData
+
+PrmText= 44
+  Text(5) = "5"
+  Text(10) = "10"
+  Text(15) = "15"
+  Text(20) = "20"
+  Text(25) = "25"
+  Text(30) = "30"
+EndPrmText
+ExtUserPrmData = 82 "Motor trip class" ;606.*
+ Unsigned16 5 5-30 
+  Prm_Text_Ref = 44
+EndExtUserPrmData
+
+PrmText= 45
+  Text(0) = " "
+EndPrmText
+ExtUserPrmData = 83 "Reserved" ;607.*
+ Unsigned16 0 0-0 
+  Prm_Text_Ref = 45
+EndExtUserPrmData
+
+ExtUserPrmData = 84 "Th overload fault rst thresh" ;608.*
+ Unsigned16 75 35-95 
+EndExtUserPrmData
+
+ExtUserPrmData = 85 "Th overload warning thresh" ;609.*
+ Unsigned16 85 10-100 
+EndExtUserPrmData
+
+ExtUserPrmData = 86 "Int Iground fault timeout" ;610.*
+ Unsigned16 10 5-250 
+EndExtUserPrmData
+
+ExtUserPrmData = 87 "Int Iground fault thresh" ;611.*
+ Unsigned16 30 20-500 
+EndExtUserPrmData
+
+ExtUserPrmData = 88 "Int Iground warning thresh" ;612.*
+ Unsigned16 30 20-500 
+EndExtUserPrmData
+
+ExtUserPrmData = 89 "phI imb fault timeout start" ;613.*
+ Unsigned16 7 2-200 
+EndExtUserPrmData
+
+ExtUserPrmData = 90 "phI imb fault timeout run" ;614.*
+ Unsigned16 50 2-200 
+EndExtUserPrmData
+
+ExtUserPrmData = 91 "phI imb fault threshold" ;615.*
+ Unsigned16 10 10-70 
+EndExtUserPrmData
+
+ExtUserPrmData = 92 "phI imb warning threshold" ;616.*
+ Unsigned16 10 10-70 
+EndExtUserPrmData
+
+ExtUserPrmData = 93 "Jam fault timeout" ;617.*
+ Unsigned16 5 1-30 
+EndExtUserPrmData
+
+ExtUserPrmData = 94 "Jam fault threshold" ;618.*
+ Unsigned16 200 100-800 
+EndExtUserPrmData
+
+ExtUserPrmData = 95 "Jam warning threshold" ;619.*
+ Unsigned16 200 100-800 
+EndExtUserPrmData
+
+ExtUserPrmData = 96 "Undercurrent fault timeout" ;620.*
+ Unsigned16 10 1-200 
+EndExtUserPrmData
+
+ExtUserPrmData = 97 "Undercurrent fault threshold" ;621.*
+ Unsigned16 50 30-100 
+EndExtUserPrmData
+
+ExtUserPrmData = 98 "Undercurrent warning thresh" ;622.*
+ Unsigned16 50 30-100 
+EndExtUserPrmData
+
+ExtUserPrmData = 99 "Long start fault timeout" ;623.*
+ Unsigned16 10 1-200 
+EndExtUserPrmData
+
+ExtUserPrmData = 100 "Long start fault threshold" ;624.*
+ Unsigned16 100 100-800 
+EndExtUserPrmData
+
+ExtUserPrmData = 101 "Iground fault enable" ;631.2
+  Bit(2) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 102 "Th overload fault enable" ;631.3
+  Bit(3) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 103 "Long start fault enable" ;631.4
+  Bit(4) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 104 "Jam fault enable" ;631.5
+  Bit(5) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 105 "phI imb fault enable" ;631.6
+  Bit(6) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 106 "Undercurrent fault enable" ;631.7
+  Bit(7) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 107 "Test fault enable" ;631.9
+  Bit(1) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 108 "HMI port fault enable" ;631.10
+  Bit(2) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 109 "Network port fault enable" ;631.15
+  Bit(7) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 110 "IGround warning enable" ;632.2
+  Bit(2) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 111 "Th overload warning enable" ;632.3
+  Bit(3) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 112 "Jam warning enable" ;632.5
+  Bit(5) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 113 "phI imb warning enable" ;632.6
+  Bit(6) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 114 "Undercurrent warning enable" ;632.7
+  Bit(7) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 115 "HMI port warning enable" ;632.10
+  Bit(2) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 116 "LTMR int temp warning enable" ;632.11
+  Bit(3) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 117 "Network port warning enable" ;632.15
+  Bit(7) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 118 "Diag fault enable" ;633.1
+  Bit(1) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 119 "Wiring fault enable" ;633.2
+  Bit(2) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 120 "Over current enable" ;633.3
+  Bit(3) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 121 "phI loss fault enable" ;633.4
+  Bit(4) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 122 "I phase rev fault enable" ;633.5
+  Bit(5) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 123 "Motor temp fault enable" ;633.6
+  Bit(6) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 124 "phV imb fault enable" ;633.7
+  Bit(7) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 125 "phV loss fault enable" ;633.8
+  Bit(0) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 126 "phV rev fault enable" ;633.9
+  Bit(1) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 127 "Undervoltage fault enable" ;633.10
+  Bit(2) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 128 "Overvoltage fault enable" ;633.11
+  Bit(3) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 129 "Under power fault enable" ;633.12
+  Bit(4) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 130 "Over power fault enable" ;633.13
+  Bit(5) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 131 "Under pow fact fault enable" ;633.14
+  Bit(6) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 132 "Over pow fact fault enable" ;633.15
+  Bit(7) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 133 "Diag warning enable" ;634.1
+  Bit(1) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 134 "Overcurrent warning enable" ;634.3
+  Bit(3) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 135 "phI loss warning enable" ;634.4
+  Bit(4) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 136 "Motor temp warning enable" ;634.6
+  Bit(6) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 137 "phV imb warning enable" ;634.7
+  Bit(7) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 138 "phV loss warning enable" ;634.8
+  Bit(0) 1 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 139 "Undervoltage warning enable" ;634.10
+  Bit(2) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 140 "Overvoltage warning enable" ;634.11
+  Bit(3) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 141 "Under power warning enable" ;634.12
+  Bit(4) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 142 "Over power warning enable" ;634.13
+  Bit(5) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 143 "Under PFact warning enable" ;634.14
+  Bit(6) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+ExtUserPrmData = 144 "Over PFact warning enable" ;634.15
+  Bit(7) 0 0-1 
+  Prm_Text_Ref = 31 
+EndExtUserPrmData
+
+PrmText= 46
+  Text(0) = " "
+EndPrmText
+ExtUserPrmData = 145 "Reserved" ;635.*
+ Unsigned16 0 0-0 
+  Prm_Text_Ref = 46
+EndExtUserPrmData
+
+PrmText= 47
+  Text(0) = " "
+EndPrmText
+ExtUserPrmData = 146 "Reserved" ;636.*
+ Unsigned16 0 0-0 
+  Prm_Text_Ref = 47
+EndExtUserPrmData
+
+ExtUserPrmData = 147 "Auto reset attempts gr1 set" ;637.*
+ Unsigned16 5 0-5 
+  Prm_Text_Ref = 35 
+EndExtUserPrmData
+
+ExtUserPrmData = 148 "Auto reset gr1 timeout" ;638.*
+ Unsigned16 480 0-9999 
+EndExtUserPrmData
+
+ExtUserPrmData = 149 "Auto reset attempts gr2 set" ;639.*
+ Unsigned16 0 0-5 
+  Prm_Text_Ref = 35 
+EndExtUserPrmData
+
+ExtUserPrmData = 150 "Auto reset gr2 timeout" ;640.*
+ Unsigned16 1200 0-9999 
+EndExtUserPrmData
+
+ExtUserPrmData = 151 "Auto reset attempts gr3 set" ;641.*
+ Unsigned16 0 0-5 
+  Prm_Text_Ref = 35 
+EndExtUserPrmData
+
+ExtUserPrmData = 152 "Auto reset gr3 timeout" ;642.*
+ Unsigned16 60 0-9999 
+EndExtUserPrmData
+
+ExtUserPrmData = 153 "Motor step 1 to 2 timeout" ;643.*
+ Unsigned16 50 0-9999 
+EndExtUserPrmData
+
+ExtUserPrmData = 154 "Motor step 1 to 2 threshold" ;644.*
+ Unsigned16 150 20-800 
+EndExtUserPrmData
+
+ExtUserPrmData = 155 "HMI port fallback setting" ;645.*
+ Unsigned16 2 0-5 
+  Prm_Text_Ref = 36 
+EndExtUserPrmData
+
+ExtUserPrmData = 156 "FLC %FLCmax" ;652.*
+ Unsigned16 5 5-100 
+EndExtUserPrmData
+
+ExtUserPrmData = 157 "Speed2 FLC %FLCmax" ;653.*
+ Unsigned16 5 5-100 
+EndExtUserPrmData
+
+ExtUserPrmData = 158 "Network fallback setting" ;682.*
+ Unsigned16 2 0-5 
+  Prm_Text_Ref = 36 
+EndExtUserPrmData
+
+ExtUserPrmData = 159 "Control local channel" ;683.8
+  Bit(0) 0 0-1 
+  Prm_Text_Ref = 37 
+EndExtUserPrmData
+
+ExtUserPrmData = 160 "Control transition mode" ;683.9
+  Bit(1) 0 0-1 
+  Prm_Text_Ref = 38 
+EndExtUserPrmData
+
+ExtUserPrmData = 161 "Bumpless transfert mode" ;683.10
+  Bit(2) 0 0-1 
+  Prm_Text_Ref = 38 
+EndExtUserPrmData
+
+;---------------------------------------------------------------------------
+;                         TesysT Module definition 
+;---------------------------------------------------------------------------
+Module = "MMC R" 0xC4,0x05,0x09,0x31,0x80,0x00,0x00
+1
+Ext_Module_Prm_Data_Len = 142
+Ext_User_Prm_Data_Const(0) = 0x08 ,\
+0x02,0x8C,0x02,\
+0x02,0x1D,0x01,\
+0x02,0x23,0x0C,\
+0x02,0x32,0x03,\
+0x02,0x5A,0x01,\
+0x02,0x5E,0x13,\
+0x02,0x77,0x0F,\
+0x02,0xAA,0x02,\
+0x00,0x00,0x00,0x00,0x00,0x00,\
+0x31,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00
+Ext_User_Prm_Data_Ref(32) = 156 ;652.* FLC %FLCmax
+Ext_User_Prm_Data_Ref(34) = 157 ;653.* Speed2 FLC %FLCmax
+Ext_User_Prm_Data_Ref(36) = 31 ;541.* Motor transition timeout
+Ext_User_Prm_Data_Ref(38) = 32 ;547.* Th overload fault timeout
+Ext_User_Prm_Data_Ref(40) = 33 ;548.* NS
+Ext_User_Prm_Data_Ref(42) = 34 ;549.* Motor temp fault threshold
+Ext_User_Prm_Data_Ref(44) = 35 ;550.* Motor temp warning threshold
+Ext_User_Prm_Data_Ref(46) = 36 ;551.* NS
+Ext_User_Prm_Data_Ref(48) = 37 ;552.* NS
+Ext_User_Prm_Data_Ref(50) = 38 ;553.* Rapid cycle lockout timeout
+Ext_User_Prm_Data_Ref(52) = 39 ;554.* NS
+Ext_User_Prm_Data_Ref(54) = 40 ;555.* phI loss fault timeout
+Ext_User_Prm_Data_Ref(56) = 41 ;556.* Overcurrent fault timeout
+Ext_User_Prm_Data_Ref(58) = 42 ;557.* Overcurrent fault threshold
+Ext_User_Prm_Data_Ref(60) = 43 ;558.* Overcurrent warning thresh
+Ext_User_Prm_Data_Ref(62) = 44 ;562.* Ext Iground fault timeout
+Ext_User_Prm_Data_Ref(64) = 45 ;563.* Ext Iground fault threshold
+Ext_User_Prm_Data_Ref(66) = 46 ;564.* Ext Iground warning thresh
+Ext_User_Prm_Data_Ref(69) = 78 ;602.0-2 Reset mode
+Ext_User_Prm_Data_Ref(69) = 79 ;602.3 HMI port parity setting
+Ext_User_Prm_Data_Ref(68) = 80 ;602.9 HMI port endian
+Ext_User_Prm_Data_Ref(68) = 81 ;602.10 Network port endian
+Ext_User_Prm_Data_Ref(70) = 82 ;606.* Motor trip class
+Ext_User_Prm_Data_Ref(72) = 83 ;607.* NS
+Ext_User_Prm_Data_Ref(74) = 84 ;608.* Th overload fault rst thresh
+Ext_User_Prm_Data_Ref(76) = 85 ;609.* Th overload warning thresh
+Ext_User_Prm_Data_Ref(78) = 86 ;610.* Int Iground fault timeout
+Ext_User_Prm_Data_Ref(80) = 87 ;611.* Int Iground fault thresh
+Ext_User_Prm_Data_Ref(82) = 88 ;612.* Int Iground warning thresh
+Ext_User_Prm_Data_Ref(84) = 89 ;613.* phI imb fault timeout start
+Ext_User_Prm_Data_Ref(86) = 90 ;614.* phI imb fault timeout run
+Ext_User_Prm_Data_Ref(88) = 91 ;615.* phI imb fault threshold
+Ext_User_Prm_Data_Ref(90) = 92 ;616.* phI imb warning threshold
+Ext_User_Prm_Data_Ref(92) = 93 ;617.* Jam fault timeout
+Ext_User_Prm_Data_Ref(94) = 94 ;618.* Jam fault threshold
+Ext_User_Prm_Data_Ref(96) = 95 ;619.* Jam warning threshold
+Ext_User_Prm_Data_Ref(98) = 96 ;620.* Undercurrent fault timeout
+Ext_User_Prm_Data_Ref(100) = 97 ;621.* Undercurrent fault threshold
+Ext_User_Prm_Data_Ref(102) = 98 ;622.* Undercurrent warning thresh
+Ext_User_Prm_Data_Ref(104) = 99 ;623.* Long start fault timeout
+Ext_User_Prm_Data_Ref(106) = 100 ;624.* Long start fault threshold
+Ext_User_Prm_Data_Ref(109) = 101 ;631.2 Iground fault enable
+Ext_User_Prm_Data_Ref(109) = 102 ;631.3 Th overload fault enable
+Ext_User_Prm_Data_Ref(109) = 103 ;631.4 Long start fault enable
+Ext_User_Prm_Data_Ref(109) = 104 ;631.5 Jam fault enable
+Ext_User_Prm_Data_Ref(109) = 105 ;631.6 phI imb fault enable
+Ext_User_Prm_Data_Ref(109) = 106 ;631.7 Undercurrent fault enable
+Ext_User_Prm_Data_Ref(108) = 107 ;631.9 Test fault enable
+Ext_User_Prm_Data_Ref(108) = 108 ;631.10 HMI port fault enable
+Ext_User_Prm_Data_Ref(108) = 109 ;631.15 Network port fault enable
+Ext_User_Prm_Data_Ref(111) = 110 ;632.2 IGround warning enable
+Ext_User_Prm_Data_Ref(111) = 111 ;632.3 Th overload warning enable
+Ext_User_Prm_Data_Ref(111) = 112 ;632.5 Jam warning enable
+Ext_User_Prm_Data_Ref(111) = 113 ;632.6 phI imb warning enable
+Ext_User_Prm_Data_Ref(111) = 114 ;632.7 Undercurrent warning enable
+Ext_User_Prm_Data_Ref(110) = 115 ;632.10 HMI port warning enable
+Ext_User_Prm_Data_Ref(110) = 116 ;632.11 LTMR int temp warning enable
+Ext_User_Prm_Data_Ref(110) = 117 ;632.15 Network port warning enable
+Ext_User_Prm_Data_Ref(113) = 118 ;633.1 Diag fault enable
+Ext_User_Prm_Data_Ref(113) = 119 ;633.2 Wiring fault enable
+Ext_User_Prm_Data_Ref(113) = 120 ;633.3 Over current enable
+Ext_User_Prm_Data_Ref(113) = 121 ;633.4 phI loss fault enable
+Ext_User_Prm_Data_Ref(113) = 122 ;633.5 I phase rev fault enable
+Ext_User_Prm_Data_Ref(113) = 123 ;633.6 Motor temp fault enable
+Ext_User_Prm_Data_Ref(115) = 133 ;634.1 Diag warning enable
+Ext_User_Prm_Data_Ref(115) = 134 ;634.3 Overcurrent warning enable
+Ext_User_Prm_Data_Ref(115) = 135 ;634.4 phI loss warning enable
+Ext_User_Prm_Data_Ref(115) = 136 ;634.6 Motor temp warning enable
+Ext_User_Prm_Data_Ref(116) = 145 ;635.* NS
+Ext_User_Prm_Data_Ref(118) = 146 ;636.* NS
+Ext_User_Prm_Data_Ref(120) = 147 ;637.* Auto reset attempts gr1 set
+Ext_User_Prm_Data_Ref(122) = 148 ;638.* Auto reset gr1 timeout
+Ext_User_Prm_Data_Ref(124) = 149 ;639.* Auto reset attempts gr2 set
+Ext_User_Prm_Data_Ref(126) = 150 ;640.* Auto reset gr2 timeout
+Ext_User_Prm_Data_Ref(128) = 151 ;641.* Auto reset attempts gr3 set
+Ext_User_Prm_Data_Ref(130) = 152 ;642.* Auto reset gr3 timeout
+Ext_User_Prm_Data_Ref(132) = 153 ;643.* Motor step 1 to 2 timeout
+Ext_User_Prm_Data_Ref(134) = 154 ;644.* Motor step 1 to 2 threshold
+Ext_User_Prm_Data_Ref(136) = 155 ;645.* HMI port fallback setting
+Ext_User_Prm_Data_Ref(138) = 158 ;682.* Network fallback setting
+Ext_User_Prm_Data_Ref(140) = 159 ;683.8 Control local channel
+Ext_User_Prm_Data_Ref(140) = 160 ;683.9 Control transition mode
+Ext_User_Prm_Data_Ref(140) = 161 ;683.10 Bumpless transfert mode
+EndModule
+Module = "MMC R EV40" 0xC4,0x05,0x09,0x32,0x80,0x00,0x00
+2
+Ext_Module_Prm_Data_Len = 204
+Ext_User_Prm_Data_Const(0) = 0x08 ,\
+0x02,0x8C,0x02,\
+0x02,0x1D,0x01,\
+0x02,0x23,0x0C,\
+0x02,0x32,0x22,\
+0x02,0x5A,0x01,\
+0x02,0x5E,0x13,\
+0x02,0x77,0x0F,\
+0x02,0xAA,0x02,\
+0x00,0x00,0x00,0x00,0x00,0x00,\
+0x32,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00
+Ext_User_Prm_Data_Ref(32) = 156 ;652.* FLC %FLCmax
+Ext_User_Prm_Data_Ref(34) = 157 ;653.* Speed2 FLC %FLCmax
+Ext_User_Prm_Data_Ref(36) = 31 ;541.* Motor transition timeout
+Ext_User_Prm_Data_Ref(38) = 32 ;547.* Th overload fault timeout
+Ext_User_Prm_Data_Ref(40) = 33 ;548.* NS
+Ext_User_Prm_Data_Ref(42) = 34 ;549.* Motor temp fault threshold
+Ext_User_Prm_Data_Ref(44) = 35 ;550.* Motor temp warning threshold
+Ext_User_Prm_Data_Ref(46) = 36 ;551.* NS
+Ext_User_Prm_Data_Ref(48) = 37 ;552.* NS
+Ext_User_Prm_Data_Ref(50) = 38 ;553.* Rapid cycle lockout timeout
+Ext_User_Prm_Data_Ref(52) = 39 ;554.* NS
+Ext_User_Prm_Data_Ref(54) = 40 ;555.* phI loss fault timeout
+Ext_User_Prm_Data_Ref(56) = 41 ;556.* Overcurrent fault timeout
+Ext_User_Prm_Data_Ref(58) = 42 ;557.* Overcurrent fault threshold
+Ext_User_Prm_Data_Ref(60) = 43 ;558.* Overcurrent warning thresh
+Ext_User_Prm_Data_Ref(62) = 44 ;562.* Ext Iground fault timeout
+Ext_User_Prm_Data_Ref(64) = 45 ;563.* Ext Iground fault threshold
+Ext_User_Prm_Data_Ref(66) = 46 ;564.* Ext Iground warning thresh
+Ext_User_Prm_Data_Ref(68) = 47 ;565.* Motor nominal voltage
+Ext_User_Prm_Data_Ref(70) = 48 ;566.* phV imb fault timeout start
+Ext_User_Prm_Data_Ref(72) = 49 ;567.* phV imb fault timeout run
+Ext_User_Prm_Data_Ref(74) = 50 ;568.* phV imb fault threshold
+Ext_User_Prm_Data_Ref(76) = 51 ;569.* phV imb warning threshold
+Ext_User_Prm_Data_Ref(78) = 52 ;570.* Overvoltage fault timeout
+Ext_User_Prm_Data_Ref(80) = 53 ;571.* Overvoltage fault threshold
+Ext_User_Prm_Data_Ref(82) = 54 ;572.* Overvoltage warning thresh
+Ext_User_Prm_Data_Ref(84) = 55 ;573.* Undervoltage fault timeout
+Ext_User_Prm_Data_Ref(86) = 56 ;574.* Undervoltage fault threshold
+Ext_User_Prm_Data_Ref(88) = 57 ;575.* Undervoltage warning thresh
+Ext_User_Prm_Data_Ref(90) = 58 ;576.* phV loss fault timeout
+Ext_User_Prm_Data_Ref(93) = 59 ;577.0 Load shedding enable
+Ext_User_Prm_Data_Ref(94) = 60 ;578.* Load shedding timeout
+Ext_User_Prm_Data_Ref(96) = 61 ;579.* Load shedding threshold
+Ext_User_Prm_Data_Ref(98) = 62 ;580.* Load shedding restart Tout
+Ext_User_Prm_Data_Ref(100) = 63 ;581.* Load shedding restart thresh
+Ext_User_Prm_Data_Ref(102) = 64 ;582.* NS
+Ext_User_Prm_Data_Ref(104) = 65 ;583.* Motor nominal power
+Ext_User_Prm_Data_Ref(106) = 66 ;584.* Over power fault timeout
+Ext_User_Prm_Data_Ref(108) = 67 ;585.* Over power fault threshold
+Ext_User_Prm_Data_Ref(110) = 68 ;586.* Overpower warning threshold
+Ext_User_Prm_Data_Ref(112) = 69 ;587.* Under power fault timeout
+Ext_User_Prm_Data_Ref(114) = 70 ;588.* Under power fault threshold
+Ext_User_Prm_Data_Ref(116) = 71 ;589.* Under power warning thresh
+Ext_User_Prm_Data_Ref(118) = 72 ;590.* Under PFact fault timeout
+Ext_User_Prm_Data_Ref(120) = 73 ;591.* Under PFact fault thresh
+Ext_User_Prm_Data_Ref(122) = 74 ;592.* Under PFact warning thresh
+Ext_User_Prm_Data_Ref(124) = 75 ;593.* Over PFact fault timeout
+Ext_User_Prm_Data_Ref(126) = 76 ;594.* Over PFact fault threshold
+Ext_User_Prm_Data_Ref(128) = 77 ;595.* Over PFact warning threshold
+Ext_User_Prm_Data_Ref(131) = 78 ;602.0-2 Reset mode
+Ext_User_Prm_Data_Ref(131) = 79 ;602.3 HMI port parity setting
+Ext_User_Prm_Data_Ref(130) = 80 ;602.9 HMI port endian
+Ext_User_Prm_Data_Ref(130) = 81 ;602.10 Network port endian
+Ext_User_Prm_Data_Ref(132) = 82 ;606.* Motor trip class
+Ext_User_Prm_Data_Ref(134) = 83 ;607.* NS
+Ext_User_Prm_Data_Ref(136) = 84 ;608.* Th overload fault rst thresh
+Ext_User_Prm_Data_Ref(138) = 85 ;609.* Th overload warning thresh
+Ext_User_Prm_Data_Ref(140) = 86 ;610.* Int Iground fault timeout
+Ext_User_Prm_Data_Ref(142) = 87 ;611.* Int Iground fault thresh
+Ext_User_Prm_Data_Ref(144) = 88 ;612.* Int Iground warning thresh
+Ext_User_Prm_Data_Ref(146) = 89 ;613.* phI imb fault timeout start
+Ext_User_Prm_Data_Ref(148) = 90 ;614.* phI imb fault timeout run
+Ext_User_Prm_Data_Ref(150) = 91 ;615.* phI imb fault threshold
+Ext_User_Prm_Data_Ref(152) = 92 ;616.* phI imb warning threshold
+Ext_User_Prm_Data_Ref(154) = 93 ;617.* Jam fault timeout
+Ext_User_Prm_Data_Ref(156) = 94 ;618.* Jam fault threshold
+Ext_User_Prm_Data_Ref(158) = 95 ;619.* Jam warning threshold
+Ext_User_Prm_Data_Ref(160) = 96 ;620.* Undercurrent fault timeout
+Ext_User_Prm_Data_Ref(162) = 97 ;621.* Undercurrent fault threshold
+Ext_User_Prm_Data_Ref(164) = 98 ;622.* Undercurrent warning thresh
+Ext_User_Prm_Data_Ref(166) = 99 ;623.* Long start fault timeout
+Ext_User_Prm_Data_Ref(168) = 100 ;624.* Long start fault threshold
+Ext_User_Prm_Data_Ref(171) = 101 ;631.2 Iground fault enable
+Ext_User_Prm_Data_Ref(171) = 102 ;631.3 Th overload fault enable
+Ext_User_Prm_Data_Ref(171) = 103 ;631.4 Long start fault enable
+Ext_User_Prm_Data_Ref(171) = 104 ;631.5 Jam fault enable
+Ext_User_Prm_Data_Ref(171) = 105 ;631.6 phI imb fault enable
+Ext_User_Prm_Data_Ref(171) = 106 ;631.7 Undercurrent fault enable
+Ext_User_Prm_Data_Ref(170) = 107 ;631.9 Test fault enable
+Ext_User_Prm_Data_Ref(170) = 108 ;631.10 HMI port fault enable
+Ext_User_Prm_Data_Ref(170) = 109 ;631.15 Network port fault enable
+Ext_User_Prm_Data_Ref(173) = 110 ;632.2 IGround warning enable
+Ext_User_Prm_Data_Ref(173) = 111 ;632.3 Th overload warning enable
+Ext_User_Prm_Data_Ref(173) = 112 ;632.5 Jam warning enable
+Ext_User_Prm_Data_Ref(173) = 113 ;632.6 phI imb warning enable
+Ext_User_Prm_Data_Ref(173) = 114 ;632.7 Undercurrent warning enable
+Ext_User_Prm_Data_Ref(172) = 115 ;632.10 HMI port warning enable
+Ext_User_Prm_Data_Ref(172) = 116 ;632.11 LTMR int temp warning enable
+Ext_User_Prm_Data_Ref(172) = 117 ;632.15 Network port warning enable
+Ext_User_Prm_Data_Ref(175) = 118 ;633.1 Diag fault enable
+Ext_User_Prm_Data_Ref(175) = 119 ;633.2 Wiring fault enable
+Ext_User_Prm_Data_Ref(175) = 120 ;633.3 Over current enable
+Ext_User_Prm_Data_Ref(175) = 121 ;633.4 phI loss fault enable
+Ext_User_Prm_Data_Ref(175) = 122 ;633.5 I phase rev fault enable
+Ext_User_Prm_Data_Ref(175) = 123 ;633.6 Motor temp fault enable
+Ext_User_Prm_Data_Ref(175) = 124 ;633.7 phV imb fault enable
+Ext_User_Prm_Data_Ref(174) = 125 ;633.8 phV loss fault enable
+Ext_User_Prm_Data_Ref(174) = 126 ;633.9 phV rev fault enable
+Ext_User_Prm_Data_Ref(174) = 127 ;633.10 Undervoltage fault enable
+Ext_User_Prm_Data_Ref(174) = 128 ;633.11 Overvoltage fault enable
+Ext_User_Prm_Data_Ref(174) = 129 ;633.12 Under power fault enable
+Ext_User_Prm_Data_Ref(174) = 130 ;633.13 Over power fault enable
+Ext_User_Prm_Data_Ref(174) = 131 ;633.14 Under pow fact fault enable
+Ext_User_Prm_Data_Ref(174) = 132 ;633.15 Over pow fact fault enable
+Ext_User_Prm_Data_Ref(177) = 133 ;634.1 Diag warning enable
+Ext_User_Prm_Data_Ref(177) = 134 ;634.3 Overcurrent warning enable
+Ext_User_Prm_Data_Ref(177) = 135 ;634.4 phI loss warning enable
+Ext_User_Prm_Data_Ref(177) = 136 ;634.6 Motor temp warning enable
+Ext_User_Prm_Data_Ref(177) = 137 ;634.7 phV imb warning enable
+Ext_User_Prm_Data_Ref(176) = 138 ;634.8 phV loss warning enable
+Ext_User_Prm_Data_Ref(176) = 139 ;634.10 Undervoltage warning enable
+Ext_User_Prm_Data_Ref(176) = 140 ;634.11 Overvoltage warning enable
+Ext_User_Prm_Data_Ref(176) = 141 ;634.12 Under power warning enable
+Ext_User_Prm_Data_Ref(176) = 142 ;634.13 Over power warning enable
+Ext_User_Prm_Data_Ref(176) = 143 ;634.14 Under PFact warning enable
+Ext_User_Prm_Data_Ref(176) = 144 ;634.15 Over PFact warning enable
+Ext_User_Prm_Data_Ref(178) = 145 ;635.* NS
+Ext_User_Prm_Data_Ref(180) = 146 ;636.* NS
+Ext_User_Prm_Data_Ref(182) = 147 ;637.* Auto reset attempts gr1 set
+Ext_User_Prm_Data_Ref(184) = 148 ;638.* Auto reset gr1 timeout
+Ext_User_Prm_Data_Ref(186) = 149 ;639.* Auto reset attempts gr2 set
+Ext_User_Prm_Data_Ref(188) = 150 ;640.* Auto reset gr2 timeout
+Ext_User_Prm_Data_Ref(190) = 151 ;641.* Auto reset attempts gr3 set
+Ext_User_Prm_Data_Ref(192) = 152 ;642.* Auto reset gr3 timeout
+Ext_User_Prm_Data_Ref(194) = 153 ;643.* Motor step 1 to 2 timeout
+Ext_User_Prm_Data_Ref(196) = 154 ;644.* Motor step 1 to 2 threshold
+Ext_User_Prm_Data_Ref(198) = 155 ;645.* HMI port fallback setting
+Ext_User_Prm_Data_Ref(200) = 158 ;682.* Network fallback setting
+Ext_User_Prm_Data_Ref(202) = 159 ;683.8 Control local channel
+Ext_User_Prm_Data_Ref(202) = 160 ;683.9 Control transition mode
+Ext_User_Prm_Data_Ref(202) = 161 ;683.10 Bumpless transfert mode
+EndModule
+Module = "MMC L" 0xC4,0x05,0x09,0x31,0xC0,0x00,0x00 
+3
+EndModule
+Module = "MMC L EV40" 0xC4,0x05,0x09,0x32,0xC0,0x00,0x00 
+4
+EndModule
+Module = "MMC R PKW" 0xC4,0x05,0x09,0x31,0x80,0x00,0x00,0xB7
+5
+Ext_Module_Prm_Data_Len = 142
+Ext_User_Prm_Data_Const(0) = 0x08 ,\
+0x02,0x8C,0x02,\
+0x02,0x1D,0x01,\
+0x02,0x23,0x0C,\
+0x02,0x32,0x03,\
+0x02,0x5A,0x01,\
+0x02,0x5E,0x13,\
+0x02,0x77,0x0F,\
+0x02,0xAA,0x02,\
+0x00,0x00,0x00,0x00,0x00,0x00,\
+0x31,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00
+Ext_User_Prm_Data_Ref(32) = 156 ;652.* FLC %FLCmax
+Ext_User_Prm_Data_Ref(34) = 157 ;653.* Speed2 FLC %FLCmax
+Ext_User_Prm_Data_Ref(36) = 31 ;541.* Motor transition timeout
+Ext_User_Prm_Data_Ref(38) = 32 ;547.* Th overload fault timeout
+Ext_User_Prm_Data_Ref(40) = 33 ;548.* NS
+Ext_User_Prm_Data_Ref(42) = 34 ;549.* Motor temp fault threshold
+Ext_User_Prm_Data_Ref(44) = 35 ;550.* Motor temp warning threshold
+Ext_User_Prm_Data_Ref(46) = 36 ;551.* NS
+Ext_User_Prm_Data_Ref(48) = 37 ;552.* NS
+Ext_User_Prm_Data_Ref(50) = 38 ;553.* Rapid cycle lockout timeout
+Ext_User_Prm_Data_Ref(52) = 39 ;554.* NS
+Ext_User_Prm_Data_Ref(54) = 40 ;555.* phI loss fault timeout
+Ext_User_Prm_Data_Ref(56) = 41 ;556.* Overcurrent fault timeout
+Ext_User_Prm_Data_Ref(58) = 42 ;557.* Overcurrent fault threshold
+Ext_User_Prm_Data_Ref(60) = 43 ;558.* Overcurrent warning thresh
+Ext_User_Prm_Data_Ref(62) = 44 ;562.* Ext Iground fault timeout
+Ext_User_Prm_Data_Ref(64) = 45 ;563.* Ext Iground fault threshold
+Ext_User_Prm_Data_Ref(66) = 46 ;564.* Ext Iground warning thresh
+Ext_User_Prm_Data_Ref(69) = 78 ;602.0-2 Reset mode
+Ext_User_Prm_Data_Ref(69) = 79 ;602.3 HMI port parity setting
+Ext_User_Prm_Data_Ref(68) = 80 ;602.9 HMI port endian
+Ext_User_Prm_Data_Ref(68) = 81 ;602.10 Network port endian
+Ext_User_Prm_Data_Ref(70) = 82 ;606.* Motor trip class
+Ext_User_Prm_Data_Ref(72) = 83 ;607.* NS
+Ext_User_Prm_Data_Ref(74) = 84 ;608.* Th overload fault rst thresh
+Ext_User_Prm_Data_Ref(76) = 85 ;609.* Th overload warning thresh
+Ext_User_Prm_Data_Ref(78) = 86 ;610.* Int Iground fault timeout
+Ext_User_Prm_Data_Ref(80) = 87 ;611.* Int Iground fault thresh
+Ext_User_Prm_Data_Ref(82) = 88 ;612.* Int Iground warning thresh
+Ext_User_Prm_Data_Ref(84) = 89 ;613.* phI imb fault timeout start
+Ext_User_Prm_Data_Ref(86) = 90 ;614.* phI imb fault timeout run
+Ext_User_Prm_Data_Ref(88) = 91 ;615.* phI imb fault threshold
+Ext_User_Prm_Data_Ref(90) = 92 ;616.* phI imb warning threshold
+Ext_User_Prm_Data_Ref(92) = 93 ;617.* Jam fault timeout
+Ext_User_Prm_Data_Ref(94) = 94 ;618.* Jam fault threshold
+Ext_User_Prm_Data_Ref(96) = 95 ;619.* Jam warning threshold
+Ext_User_Prm_Data_Ref(98) = 96 ;620.* Undercurrent fault timeout
+Ext_User_Prm_Data_Ref(100) = 97 ;621.* Undercurrent fault threshold
+Ext_User_Prm_Data_Ref(102) = 98 ;622.* Undercurrent warning thresh
+Ext_User_Prm_Data_Ref(104) = 99 ;623.* Long start fault timeout
+Ext_User_Prm_Data_Ref(106) = 100 ;624.* Long start fault threshold
+Ext_User_Prm_Data_Ref(109) = 101 ;631.2 Iground fault enable
+Ext_User_Prm_Data_Ref(109) = 102 ;631.3 Th overload fault enable
+Ext_User_Prm_Data_Ref(109) = 103 ;631.4 Long start fault enable
+Ext_User_Prm_Data_Ref(109) = 104 ;631.5 Jam fault enable
+Ext_User_Prm_Data_Ref(109) = 105 ;631.6 phI imb fault enable
+Ext_User_Prm_Data_Ref(109) = 106 ;631.7 Undercurrent fault enable
+Ext_User_Prm_Data_Ref(108) = 107 ;631.9 Test fault enable
+Ext_User_Prm_Data_Ref(108) = 108 ;631.10 HMI port fault enable
+Ext_User_Prm_Data_Ref(108) = 109 ;631.15 Network port fault enable
+Ext_User_Prm_Data_Ref(111) = 110 ;632.2 IGround warning enable
+Ext_User_Prm_Data_Ref(111) = 111 ;632.3 Th overload warning enable
+Ext_User_Prm_Data_Ref(111) = 112 ;632.5 Jam warning enable
+Ext_User_Prm_Data_Ref(111) = 113 ;632.6 phI imb warning enable
+Ext_User_Prm_Data_Ref(111) = 114 ;632.7 Undercurrent warning enable
+Ext_User_Prm_Data_Ref(110) = 115 ;632.10 HMI port warning enable
+Ext_User_Prm_Data_Ref(110) = 116 ;632.11 LTMR int temp warning enable
+Ext_User_Prm_Data_Ref(110) = 117 ;632.15 Network port warning enable
+Ext_User_Prm_Data_Ref(113) = 118 ;633.1 Diag fault enable
+Ext_User_Prm_Data_Ref(113) = 119 ;633.2 Wiring fault enable
+Ext_User_Prm_Data_Ref(113) = 120 ;633.3 Over current enable
+Ext_User_Prm_Data_Ref(113) = 121 ;633.4 phI loss fault enable
+Ext_User_Prm_Data_Ref(113) = 122 ;633.5 I phase rev fault enable
+Ext_User_Prm_Data_Ref(113) = 123 ;633.6 Motor temp fault enable
+Ext_User_Prm_Data_Ref(115) = 133 ;634.1 Diag warning enable
+Ext_User_Prm_Data_Ref(115) = 134 ;634.3 Overcurrent warning enable
+Ext_User_Prm_Data_Ref(115) = 135 ;634.4 phI loss warning enable
+Ext_User_Prm_Data_Ref(115) = 136 ;634.6 Motor temp warning enable
+Ext_User_Prm_Data_Ref(116) = 145 ;635.* NS
+Ext_User_Prm_Data_Ref(118) = 146 ;636.* NS
+Ext_User_Prm_Data_Ref(120) = 147 ;637.* Auto reset attempts gr1 set
+Ext_User_Prm_Data_Ref(122) = 148 ;638.* Auto reset gr1 timeout
+Ext_User_Prm_Data_Ref(124) = 149 ;639.* Auto reset attempts gr2 set
+Ext_User_Prm_Data_Ref(126) = 150 ;640.* Auto reset gr2 timeout
+Ext_User_Prm_Data_Ref(128) = 151 ;641.* Auto reset attempts gr3 set
+Ext_User_Prm_Data_Ref(130) = 152 ;642.* Auto reset gr3 timeout
+Ext_User_Prm_Data_Ref(132) = 153 ;643.* Motor step 1 to 2 timeout
+Ext_User_Prm_Data_Ref(134) = 154 ;644.* Motor step 1 to 2 threshold
+Ext_User_Prm_Data_Ref(136) = 155 ;645.* HMI port fallback setting
+Ext_User_Prm_Data_Ref(138) = 158 ;682.* Network fallback setting
+Ext_User_Prm_Data_Ref(140) = 159 ;683.8 Control local channel
+Ext_User_Prm_Data_Ref(140) = 160 ;683.9 Control transition mode
+Ext_User_Prm_Data_Ref(140) = 161 ;683.10 Bumpless transfert mode
+EndModule
+Module = "MMC R PKW EV40" 0xC4,0x05,0x09,0x32,0x80,0x00,0x00,0xB7
+6
+Ext_Module_Prm_Data_Len = 204
+Ext_User_Prm_Data_Const(0) = 0x08 ,\
+0x02,0x8C,0x02,\
+0x02,0x1D,0x01,\
+0x02,0x23,0x0C,\
+0x02,0x32,0x22,\
+0x02,0x5A,0x01,\
+0x02,0x5E,0x13,\
+0x02,0x77,0x0F,\
+0x02,0xAA,0x02,\
+0x00,0x00,0x00,0x00,0x00,0x00,\
+0x32,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,\
+0x00,0x00,0x00
+Ext_User_Prm_Data_Ref(32) = 156 ;652.* FLC %FLCmax
+Ext_User_Prm_Data_Ref(34) = 157 ;653.* Speed2 FLC %FLCmax
+Ext_User_Prm_Data_Ref(36) = 31 ;541.* Motor transition timeout
+Ext_User_Prm_Data_Ref(38) = 32 ;547.* Th overload fault timeout
+Ext_User_Prm_Data_Ref(40) = 33 ;548.* NS
+Ext_User_Prm_Data_Ref(42) = 34 ;549.* Motor temp fault threshold
+Ext_User_Prm_Data_Ref(44) = 35 ;550.* Motor temp warning threshold
+Ext_User_Prm_Data_Ref(46) = 36 ;551.* NS
+Ext_User_Prm_Data_Ref(48) = 37 ;552.* NS
+Ext_User_Prm_Data_Ref(50) = 38 ;553.* Rapid cycle lockout timeout
+Ext_User_Prm_Data_Ref(52) = 39 ;554.* NS
+Ext_User_Prm_Data_Ref(54) = 40 ;555.* phI loss fault timeout
+Ext_User_Prm_Data_Ref(56) = 41 ;556.* Overcurrent fault timeout
+Ext_User_Prm_Data_Ref(58) = 42 ;557.* Overcurrent fault threshold
+Ext_User_Prm_Data_Ref(60) = 43 ;558.* Overcurrent warning thresh
+Ext_User_Prm_Data_Ref(62) = 44 ;562.* Ext Iground fault timeout
+Ext_User_Prm_Data_Ref(64) = 45 ;563.* Ext Iground fault threshold
+Ext_User_Prm_Data_Ref(66) = 46 ;564.* Ext Iground warning thresh
+Ext_User_Prm_Data_Ref(68) = 47 ;565.* Motor nominal voltage
+Ext_User_Prm_Data_Ref(70) = 48 ;566.* phV imb fault timeout start
+Ext_User_Prm_Data_Ref(72) = 49 ;567.* phV imb fault timeout run
+Ext_User_Prm_Data_Ref(74) = 50 ;568.* phV imb fault threshold
+Ext_User_Prm_Data_Ref(76) = 51 ;569.* phV imb warning threshold
+Ext_User_Prm_Data_Ref(78) = 52 ;570.* Overvoltage fault timeout
+Ext_User_Prm_Data_Ref(80) = 53 ;571.* Overvoltage fault threshold
+Ext_User_Prm_Data_Ref(82) = 54 ;572.* Overvoltage warning thresh
+Ext_User_Prm_Data_Ref(84) = 55 ;573.* Undervoltage fault timeout
+Ext_User_Prm_Data_Ref(86) = 56 ;574.* Undervoltage fault threshold
+Ext_User_Prm_Data_Ref(88) = 57 ;575.* Undervoltage warning thresh
+Ext_User_Prm_Data_Ref(90) = 58 ;576.* phV loss fault timeout
+Ext_User_Prm_Data_Ref(93) = 59 ;577.0 Load shedding enable
+Ext_User_Prm_Data_Ref(94) = 60 ;578.* Load shedding timeout
+Ext_User_Prm_Data_Ref(96) = 61 ;579.* Load shedding threshold
+Ext_User_Prm_Data_Ref(98) = 62 ;580.* Load shedding restart Tout
+Ext_User_Prm_Data_Ref(100) = 63 ;581.* Load shedding restart thresh
+Ext_User_Prm_Data_Ref(102) = 64 ;582.* NS
+Ext_User_Prm_Data_Ref(104) = 65 ;583.* Motor nominal power
+Ext_User_Prm_Data_Ref(106) = 66 ;584.* Over power fault timeout
+Ext_User_Prm_Data_Ref(108) = 67 ;585.* Over power fault threshold
+Ext_User_Prm_Data_Ref(110) = 68 ;586.* Overpower warning threshold
+Ext_User_Prm_Data_Ref(112) = 69 ;587.* Under power fault timeout
+Ext_User_Prm_Data_Ref(114) = 70 ;588.* Under power fault threshold
+Ext_User_Prm_Data_Ref(116) = 71 ;589.* Under power warning thresh
+Ext_User_Prm_Data_Ref(118) = 72 ;590.* Under PFact fault timeout
+Ext_User_Prm_Data_Ref(120) = 73 ;591.* Under PFact fault thresh
+Ext_User_Prm_Data_Ref(122) = 74 ;592.* Under PFact warning thresh
+Ext_User_Prm_Data_Ref(124) = 75 ;593.* Over PFact fault timeout
+Ext_User_Prm_Data_Ref(126) = 76 ;594.* Over PFact fault threshold
+Ext_User_Prm_Data_Ref(128) = 77 ;595.* Over PFact warning threshold
+Ext_User_Prm_Data_Ref(131) = 78 ;602.0-2 Reset mode
+Ext_User_Prm_Data_Ref(131) = 79 ;602.3 HMI port parity setting
+Ext_User_Prm_Data_Ref(130) = 80 ;602.9 HMI port endian
+Ext_User_Prm_Data_Ref(130) = 81 ;602.10 Network port endian
+Ext_User_Prm_Data_Ref(132) = 82 ;606.* Motor trip class
+Ext_User_Prm_Data_Ref(134) = 83 ;607.* NS
+Ext_User_Prm_Data_Ref(136) = 84 ;608.* Th overload fault rst thresh
+Ext_User_Prm_Data_Ref(138) = 85 ;609.* Th overload warning thresh
+Ext_User_Prm_Data_Ref(140) = 86 ;610.* Int Iground fault timeout
+Ext_User_Prm_Data_Ref(142) = 87 ;611.* Int Iground fault thresh
+Ext_User_Prm_Data_Ref(144) = 88 ;612.* Int Iground warning thresh
+Ext_User_Prm_Data_Ref(146) = 89 ;613.* phI imb fault timeout start
+Ext_User_Prm_Data_Ref(148) = 90 ;614.* phI imb fault timeout run
+Ext_User_Prm_Data_Ref(150) = 91 ;615.* phI imb fault threshold
+Ext_User_Prm_Data_Ref(152) = 92 ;616.* phI imb warning threshold
+Ext_User_Prm_Data_Ref(154) = 93 ;617.* Jam fault timeout
+Ext_User_Prm_Data_Ref(156) = 94 ;618.* Jam fault threshold
+Ext_User_Prm_Data_Ref(158) = 95 ;619.* Jam warning threshold
+Ext_User_Prm_Data_Ref(160) = 96 ;620.* Undercurrent fault timeout
+Ext_User_Prm_Data_Ref(162) = 97 ;621.* Undercurrent fault threshold
+Ext_User_Prm_Data_Ref(164) = 98 ;622.* Undercurrent warning thresh
+Ext_User_Prm_Data_Ref(166) = 99 ;623.* Long start fault timeout
+Ext_User_Prm_Data_Ref(168) = 100 ;624.* Long start fault threshold
+Ext_User_Prm_Data_Ref(171) = 101 ;631.2 Iground fault enable
+Ext_User_Prm_Data_Ref(171) = 102 ;631.3 Th overload fault enable
+Ext_User_Prm_Data_Ref(171) = 103 ;631.4 Long start fault enable
+Ext_User_Prm_Data_Ref(171) = 104 ;631.5 Jam fault enable
+Ext_User_Prm_Data_Ref(171) = 105 ;631.6 phI imb fault enable
+Ext_User_Prm_Data_Ref(171) = 106 ;631.7 Undercurrent fault enable
+Ext_User_Prm_Data_Ref(170) = 107 ;631.9 Test fault enable
+Ext_User_Prm_Data_Ref(170) = 108 ;631.10 HMI port fault enable
+Ext_User_Prm_Data_Ref(170) = 109 ;631.15 Network port fault enable
+Ext_User_Prm_Data_Ref(173) = 110 ;632.2 IGround warning enable
+Ext_User_Prm_Data_Ref(173) = 111 ;632.3 Th overload warning enable
+Ext_User_Prm_Data_Ref(173) = 112 ;632.5 Jam warning enable
+Ext_User_Prm_Data_Ref(173) = 113 ;632.6 phI imb warning enable
+Ext_User_Prm_Data_Ref(173) = 114 ;632.7 Undercurrent warning enable
+Ext_User_Prm_Data_Ref(172) = 115 ;632.10 HMI port warning enable
+Ext_User_Prm_Data_Ref(172) = 116 ;632.11 LTMR int temp warning enable
+Ext_User_Prm_Data_Ref(172) = 117 ;632.15 Network port warning enable
+Ext_User_Prm_Data_Ref(175) = 118 ;633.1 Diag fault enable
+Ext_User_Prm_Data_Ref(175) = 119 ;633.2 Wiring fault enable
+Ext_User_Prm_Data_Ref(175) = 120 ;633.3 Over current enable
+Ext_User_Prm_Data_Ref(175) = 121 ;633.4 phI loss fault enable
+Ext_User_Prm_Data_Ref(175) = 122 ;633.5 I phase rev fault enable
+Ext_User_Prm_Data_Ref(175) = 123 ;633.6 Motor temp fault enable
+Ext_User_Prm_Data_Ref(175) = 124 ;633.7 phV imb fault enable
+Ext_User_Prm_Data_Ref(174) = 125 ;633.8 phV loss fault enable
+Ext_User_Prm_Data_Ref(174) = 126 ;633.9 phV rev fault enable
+Ext_User_Prm_Data_Ref(174) = 127 ;633.10 Undervoltage fault enable
+Ext_User_Prm_Data_Ref(174) = 128 ;633.11 Overvoltage fault enable
+Ext_User_Prm_Data_Ref(174) = 129 ;633.12 Under power fault enable
+Ext_User_Prm_Data_Ref(174) = 130 ;633.13 Over power fault enable
+Ext_User_Prm_Data_Ref(174) = 131 ;633.14 Under pow fact fault enable
+Ext_User_Prm_Data_Ref(174) = 132 ;633.15 Over pow fact fault enable
+Ext_User_Prm_Data_Ref(177) = 133 ;634.1 Diag warning enable
+Ext_User_Prm_Data_Ref(177) = 134 ;634.3 Overcurrent warning enable
+Ext_User_Prm_Data_Ref(177) = 135 ;634.4 phI loss warning enable
+Ext_User_Prm_Data_Ref(177) = 136 ;634.6 Motor temp warning enable
+Ext_User_Prm_Data_Ref(177) = 137 ;634.7 phV imb warning enable
+Ext_User_Prm_Data_Ref(176) = 138 ;634.8 phV loss warning enable
+Ext_User_Prm_Data_Ref(176) = 139 ;634.10 Undervoltage warning enable
+Ext_User_Prm_Data_Ref(176) = 140 ;634.11 Overvoltage warning enable
+Ext_User_Prm_Data_Ref(176) = 141 ;634.12 Under power warning enable
+Ext_User_Prm_Data_Ref(176) = 142 ;634.13 Over power warning enable
+Ext_User_Prm_Data_Ref(176) = 143 ;634.14 Under PFact warning enable
+Ext_User_Prm_Data_Ref(176) = 144 ;634.15 Over PFact warning enable
+Ext_User_Prm_Data_Ref(178) = 145 ;635.* NS
+Ext_User_Prm_Data_Ref(180) = 146 ;636.* NS
+Ext_User_Prm_Data_Ref(182) = 147 ;637.* Auto reset attempts gr1 set
+Ext_User_Prm_Data_Ref(184) = 148 ;638.* Auto reset gr1 timeout
+Ext_User_Prm_Data_Ref(186) = 149 ;639.* Auto reset attempts gr2 set
+Ext_User_Prm_Data_Ref(188) = 150 ;640.* Auto reset gr2 timeout
+Ext_User_Prm_Data_Ref(190) = 151 ;641.* Auto reset attempts gr3 set
+Ext_User_Prm_Data_Ref(192) = 152 ;642.* Auto reset gr3 timeout
+Ext_User_Prm_Data_Ref(194) = 153 ;643.* Motor step 1 to 2 timeout
+Ext_User_Prm_Data_Ref(196) = 154 ;644.* Motor step 1 to 2 threshold
+Ext_User_Prm_Data_Ref(198) = 155 ;645.* HMI port fallback setting
+Ext_User_Prm_Data_Ref(200) = 158 ;682.* Network fallback setting
+Ext_User_Prm_Data_Ref(202) = 159 ;683.8 Control local channel
+Ext_User_Prm_Data_Ref(202) = 160 ;683.9 Control transition mode
+Ext_User_Prm_Data_Ref(202) = 161 ;683.10 Bumpless transfert mode
+EndModule
+Module = "MMC L PKW" 0xC4,0x05,0x09,0x31,0xC0,0x00,0x00,0xB7 
+7
+EndModule
+Module = "MMC L PKW EV40" 0xC4,0x05,0x09,0x32,0xC0,0x00,0x00,0xB7 
+8
+EndModule
